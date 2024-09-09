@@ -171,11 +171,11 @@ Demographic Factors: `Age`, `marital status`, `female`, and `children_in_househo
 
 Located in the `notebooks` section of this repo, here's an overview of what these notebooks cover:
 
-- [Introduction to data and reliminary EDA](./notebooks/01%20Introduction%20to%20Data%20and%20Preliminary%20EDA.ipynb): This notebook introduces the data we're focusing on, with initial EDA for 2021 survey data.
+- [Introduction to data and preliminary EDA](./notebooks/01%20Introduction%20to%20Data%20and%20Preliminary%20EDA.ipynb): This notebook introduces the data we're focusing on, with initial EDA for 2021 survey data.
 - [Merging data and preprocessing](./notebooks/02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb): This notebook merges all survey data acorss 2015, 2017, 2019, 2021 getting this ready for in-depth EDA and preprocessing for our baseline modelling.
 - [Further EDA](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynbb): This notebook conducts in-depth exploration of our fully merged and cleaned dataset.
 - [Baseline Modelling](./notebooks/modeling.ipynb): In this notebook, we train our 'base model': logistic regression using statsmodel.
-- [Model 1: Decision Tree](./notebooks/05%20Model%201:%20Decision%20Tree.ipynb). Here, we transition to more advanced modelling and ML techniques, based on learnings form our base model.
+- [Model 1: Decision Tree](./notebooks/05%20Model%201:%20Decision%20Tree.ipynb). Here, we transition to more advanced modelling and ML techniques, based on learnings from our base model.
 
 
 #### Repository 
