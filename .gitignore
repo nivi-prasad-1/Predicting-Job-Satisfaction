@@ -7,5 +7,12 @@ data/
 
 # Ignore all *.pkl files
 *.pkl
+*.keras
 models/
 preprocessed_variables/
+
+# Ignore macOS system file
+.DS_Store
+
+# Ignore all files in models/logs/
+models/logs/
