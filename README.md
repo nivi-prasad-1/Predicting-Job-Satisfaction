@@ -48,13 +48,13 @@ This project seeks to:
 ---
 ### If you want to get into the nitty gritty of this project, here are key notebooks:
 
-- **00 Data dictionary and mappings**: [Link](./notebooks/00%20Data%20dictionary%20and%20mappings.ipynb)
-- **01 Introduction to Data**: [Link](./notebooks/01%20Introduction%20to%20Data.ipynb)
-- **02 Merging Survey Data**: [Link](./notebooks/02%20Merging%20survey%20data.ipynb)
-- **03 Further EDA and Preprocessing**: [Link](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
-- **05 Preparing for Advanced Modeling**: [Link](./notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
-- **09 Evaluation**: [Link](./notebooks/09%20Evaluation.ipynb)
-- **10 Summary of Findings and Next Steps**: [Link](./notebooks/10%20Summary%20of%20findings%20and%20next%20steps.ipynb)
+- 00 [Data dictionary and mappings](./notebooks/00%20Data%20dictionary%20and%20mappings.ipynb)
+- 01 [Introduction to Data](./notebooks/01%20Introduction%20to%20Data.ipynb)
+- 02 [Merging Survey Data](./notebooks/02%20Merging%20survey%20data.ipynb)
+- 03 [Further EDA and Preprocessing](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
+- 05 [Preparing for Advanced Modeling](./notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
+- 09 [Evaluation](./notebooks/09%20Evaluation.ipynb)
+- 10 [Evaluation](./notebooks/10%20Summary%20of%20findings%20and%20next%20steps.ipynb)
 
 ---
 
