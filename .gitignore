@@ -7,7 +7,6 @@ data/
 
 # Ignore all *.pkl files
 *.pkl
-*.keras
 models/
 preprocessed_variables/
 
