@@ -1,72 +1,75 @@
+<!-- Images above the title -->
+<div style="text-align: center;">
+    <img src="../capstone_template/interactive_app/image1.png" alt="Image 1" style="width: 200px; margin-right: 20px;"/>
+    <img src="../capstone_template/interactive_app/image2.png" alt="Image 2" style="width: 200px;"/>
+</div>
 
-## How can we use Machine Learning to predict likelihood of 'high job satisfaction'?
-=========================
+<!-- Centered title with styling -->
+<h1 style="text-align: center; font-family: Arial, sans-serif; font-size: 36px; font-weight: bold;">
+    Who’s likely to love their job? A Predictive Tool for Job Satisfaction and Key Drivers
+</h1>
 
-### Executive Summary
+<!-- Subtitle (optional) -->
+<h2 style="text-align: center; font-family: Arial, sans-serif; font-size: 24px; color: grey;">
+    Developing predictions and actionable insights to support labour market policymakers and jobseekers 
+</h2>
 
-#### **What is the problem we're trying to address?**
+---
+## Table of Contents
 
-* Job matching and striving for job satisfaction continues to be a critical issue in today’s labour market (and something many of us can relate to, more personally!). 
-* We talk a lot about the skills we need to be the right fit for a job, our work-life balance, and levels of financial wellbeing we aspire to. 
-* But it continues to be challenge to get the ‘right fit’, as we know from stark unemployment figures
-* Often studies and articles focus on salary as the key outcome for a successful job match
-* We can go beyond this to consider: 
+1. [Problem Space](#problem-space)
 
- **What actually influences an individual's likelihood of job satisfaction?** 
-* **Can we develop predictions that enable to predict this better?**
+2. [Summary of Data Cleaning and Preprocessing](#1-summary-of-data-cleaning-and-preprocessing)
 
-#### **What is the data science opportunity?**
+2. [Insights from Exploratory Data Analysis and Baseline Modelling](#2-insights-from-exploratory-data-analysis-and-baseline-modelling)
 
-* How might we use machine learning to better predict the likelihood of 'high job satisfaction' for a jobseeker or individual currently in employment?
-* How can we use ML classification to predict whether an individual is likely to be 'highly satisfied' in their job?
-* Using ML, we have the opportunity to use our insights from classification modelling to develop recommendations for jobseekers seeking greater career satisfaction, as well as provide insights to policymakers who often grapple prioritising and addressing inequities in the labour market
+3. [Model construction and evaluation](#3-model-construction-and-evaluation)
 
-#### **What data are we using?**
+4. [Findings from Machine Learning Classification: Feature Importance](#4-findings-from-machine-learning-classification-feature-importance)
 
-The U.S. National Survey of College Graduates (NSCG) is a recurring survey conducted by the National Science Foundation (NSF) that collects detailed information on the educational background, employment status, and career paths of individuals with at least a bachelor's degree in the United States. 
+5. ['So What?' Value for policymakers and jobseekers](#5-so-what-value-for-policymakers-and-jobseekers)
 
-* The NSCG is used to assess trends in the labor market, particularly within science and engineering fields, and to inform policies related to education, workforce development, and economic competitiveness. 
-* The survey provides valuable insights into the experiences and outcomes of college graduates, including factors like job satisfaction, salary, and the relevance of education to employment.
+6. [Next Steps](#6-next-steps)
 
-The NSCG dataset is collected in a cyclical manner, with major surveys conducted every two to three years. 
+7. [Final Comments and Reflections](#7-final-comments-and-reflections)
 
-This means that each dataset provides a **snapshot of the U.S. college graduate population at a specific point in time**, allowing for both cross-sectional analysis and, to some extent, longitudinal insights when comparing data across different survey years.
+8. [Note on repository](#8-note-on-repository)
+
+---
+
+## 1. Summary of Data Cleaning and Preprocessing
+
+### 1.1 Links to
 
 
-### Data Dictionary
-| Raw Data - Variable_Name   | Variable Name              | Description                                              | Data Structure                                                                                                           |
-|----------------------------|----------------------------|----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| JOBSATIS                    | job_satisfaction           | Job satisfaction                                         | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATSAL                      | satisfaction_salary        | Satisfaction with job's salary                           | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATADV                      | satisfaction_advancement   | Satisfaction with advancement opportunities              | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATBEN                      | satisfaction_benefits      | Satisfaction with benefits                               | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATCHAL                     | satisfaction_challenges    | Satisfaction with job's intellectual challenge            | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATLOC                      | satisfaction_location      | Satisfaction with job location                           | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SATSEC                      | satisfaction_security      | Satisfaction with job security                           | 1: Very satisfied, 2: Somewhat satisfied, 3: Somewhat dissatisfied, 4: Very dissatisfied, L: Logical Skip                |
-| SALARY                      | salary                     | Salary (annualized)                                      | 0-9999996: Value, 9999998: Logical Skip                                                                                   |
-| FACSOC                      | importance_society_contribution | Self-rated assessment of job's contribution to society   | 1: Very important, 2: Somewhat important, 3: Somewhat unimportant, 4: Not important at all, L: Logical Skip             |
-| OCEDRLP                     | job_degree_relation        | Extent that principal job is related to highest degree    | 1: Closely related, 2: Somewhat related, 3: Not related, L: Logical Skip                                                 |
-| N2MRMED                     | recent_degree_field        | Field of study of major for the most recent degree        | Code for field of study during reference week - best code                                                                |
-| MRDG                        | recent_degree_type         | Type of degree for most recent degree                    | 1 - Bachelor's, 2 - Master's, 3 - Doctorate, 4 - Professional degree                                                    |
-| MRDACYR                     | academic_year_most_recent_degree | Academic year of award for most recent degree           | Year of most recent degree completion (numeric)                                                                         |
-| GENDER                      | gender                     | Gender                                                   | F: Female, M: Male                                                                                                       |
-| AGE                         | age                        | Age                                                      | Age number                                                                                                              |
-| AGEGR                       | age_group                  | Age group (5-year intervals)                             | 20: Ages 24 or younger, 25: Ages 25-29, 30: Ages 30-34, etc.                                                             |
-| RACEM                       | race                       | Race                                                     | 1: Asian ONLY, 2: American Indian/Alaska Native ONLY, 3: Black ONLY, 4: White ONLY, 5: Native Hawaiian/Other Pacific Islander ONLY, 6: Multiple Race |
-| EMSECDT                     | employer_sector_detailed   | Employer sector (detailed codes)                         | 11: 4-yr college/university, 12: 2-yr college, 21: Business/Industry, 22: Government, etc.                               |
-| EMSECSM                     | employer_sector_summary    | Employer sector (summary codes)                          | 1: Educational Institution, 2: Government, 3: Business/Industry, L: Logical Skip                                         |
-| EMSIZE                      | employer_size              | Employer size                                            | 1: 10 or fewer employees, 2: 11-24 employees, 3: 25-99 employees, 4: 100-499 employees, etc.                             |
-| EMST                        | employer_location          | State/country code for employer                          | Various codes for U.S. regions, states, and countries, L: Logical Skip                                                   |
-| MARSTA                      | marital_status             | Marital Status                                           | 1: Married, 2: Living in a marriage-like relationship, 3: Widowed, 4: Separated, 5: Divorced, 6: Never married          |
-| RESPLO3                     | respondent_location_code   | 3-Digit respondent location (state/country code)         | Various codes for U.S. regions, states, and countries, L: Logical Skip                                                   |
-| CTZUSIN                     | citizenship_status         | U.S. citizenship status                                  | N: Non-U.S. citizen, Y: U.S. citizen                                                                                     |
-| CHLVIN                      | children_in_household      | Children living in household                             | N: No, Y: Yes                                                                                                            |
-| CLICNMBR                    | active_certifications      | Number of active certifications/licenses                 | Numeric value: 0 - n certifications/licenses currently active                                                            |
-| LWMN                        | last_worked_month          | Month when the individual last worked before the current job | 1-12: Month (1 for January, 2 for February, etc.)                                                                        |
-| LWYR                        | last_worked_year           | Year when the individual last worked before the current job | Year (numeric)                                                                                                          |
-| STRTYR                      | start_year_current_job     | Year when the individual started their current principal job | Year (numeric)                                                                                                          |                                |
-| N3OCPR                      | occupation_name            | Occupation code for the principal job                    | Code that best describes the principal job held during the week of February 1                                            |
+# Problem Space 
 
+Finding a job we ‘love’ is hard and critical in today’s labor market to support productivity and wellbeing - and something we can all relate to on a personal level.
+
+This project seeks to:
+- Predict job satisfaction based on various attributes like career advancement, salary, and job duration.
+- Understand the drivers of job satisfaction through feature importance and model interpretations.
+
+---
+### If you want to get into the nitty gritty of this project, here are key notebooks:
+
+- **00 Data dictionary and mappings**: [Link](./notebooks/00%20Data%20dictionary%20and%20mappings.ipynb)
+- **01 Introduction to Data**: [Link](./notebooks/01%20Introduction%20to%20Data.ipynb)
+- **02 Merging Survey Data**: [Link](./notebooks/02%20Merging%20survey%20data.ipynb)
+- **03 Further EDA and Preprocessing**: [Link](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
+- **05 Preparing for Advanced Modeling**: [Link](./notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
+- **09 Evaluation**: [Link](./notebooks/09%20Evaluation.ipynb)
+- **10 Summary of Findings and Next Steps**: [Link](./notebooks/10%20Summary%20of%20findings%20and%20next%20steps.ipynb)
+
+---
+
+# 1. Summary of Data Cleaning and Preprocessing
+
+The U.S. National Survey of College Graduates (NSCG) is a recurring survey conducted by the National Science Foundation (NSF) that collects detailed information on the educational background, employment status, and career paths of individuals with at least a bachelor's degree in the United States.
+
+The dataset used for this project spans four years of survey data collected by the NSF, covering a wide array of variables related to employment, job satisfaction, job tenure, education, and socio-economic factors.
+
+A total of **200+ survey questions** were asked in the original survey, and through careful reading of survey questions and user guide documentation, we identified 31+ employment-specific questions asked by the creators of the survey (before we began more in-depth feature engineering, selection, and preprocessing!).
 
 #### Links to primary datasets used for this project
 
@@ -75,120 +78,362 @@ https://ncses.nsf.gov/423/assets/0/file/ncses_nscg.pdf
 https://ncses.nsf.gov/pubs/nsf23306/assets/nsf23306.pdf
 https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates
 
-### Overview of modelling roadmap
+#### Cleaning Process:
 
-![Modelling roadmap](./project_docs/modelling-roadmap.png)
+The process of cleaning the data involved multiple steps to ensure consistency and accuracy before any modeling could take place. Below is a summary of the key challenges and how they were addressed:
 
-### What have we learnt from conducting in-depth Exploratory Data Analysis?
+| **Challenge**                                      | **Approach to Resolution**                                                                 |
+|----------------------------------------------------|--------------------------------------------------------------------------------------------|
+| Inconsistent variable mappings across years        | Used **lists** and **loops** to map SAS format variables across years; checked for mismatches using assertions. |
+| Understanding relevant survey questions from 200+ questions | Used domain knowledge to identify **31 core job-related survey questions** relevant for predicting satisfaction. |
+| Appending datasets from four survey years          | Inspected one year’s data in detail, then **appended** all years together after data structure validation. |
+| Handling missing values and mismatches             | Ensured no missing key columns and values, adjusted mappings, and used proper fill methods for missing data. |
+
+#### Preprocessing Techniques:
+
+### (a) Our original distribution of overall satisfaction scores indicated potential for binary classification - respondents generally liked their jobs
+
+![Overall satisfaction](../visualisations/overall_satscore.png)
+
+The majority of respondents fall into the two highest satisfaction categories: 
+
+**45.28%** are *Somewhat Satisfied* and **44.45%** are *Very Satisfied*. Together, they account for nearly 90% of the population, which suggests a strong skew towards higher satisfaction.
+
+The two lower satisfaction categories—*Very Dissatisfied* (**2.21%**) and *Somewhat Dissatisfied* (**8.06%*)—comprise only about 10% of the population. This imbalance justified grouping the satisfaction scores into two broader categories to better capture the underlying distribution.
+
+Furthermore, Policymakers and jobseekers are primarily interested in knowing whether an individual is generally satisfied or dissatisfied with their job. Grouping into **'High Satisfaction'** and **'Low Satisfaction'** provides more actionable insights for decision-making and intervention design, without diluting the predictive power of the model by focusing on minor distinctions.
+
+Thus, the decision to code the target variable as a binary classification of **'High Satisfaction'** or **'Low Satisfaction'** was both a practical and methodological choice, grounded in the data's distribution and the project's goals.
+
+### (b) Components of 'overall job satisfaction' showed a similar distribution - suggesting focusing on 'overall' satisfaction is more suited as our target
+
+![Job Satisfaction Scores](../visualisations/satscores.png)
+
+#### Instead, this suggested that a more interesting area of exploration would be **how much are these other components of job satisfaction contributing to our overall job sa**tisfaction?'**
+
+### (c)  However, we had to address the resulting class imbalance in our 'overall job satisfaction' target variable, using SMOTE
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="text-align: center;">
+        <img src="../visualisations/target_before_SMOTE.png" alt="Before SMOTE" style="width: 65%;">
+        <p>Target Distribution Before SMOTE</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="../visualisations/target_after_SMOTE.png" alt="After SMOTE" style="width: 65%;">
+        <p>Target Distribution After SMOTE</p>
+    </div>
+</div>
+
+#### As we can see above, we address the original 90% positive/'High Satisfaction' class imbalance by applying SMOTE.
+
+This was one of many steps taken to get our data ready for modelling. The table below summarises key techniques applied:
+
+| **Preprocessing Technique**                        | **Rationale/Impact on Model Performance**                                    |
+|----------------------------------------------------|-----------------------------------------------------------------------------|
+| Binary coding of target variable (`High Satisfaction` (1), `Low Satisfaction` (0)) | Converted job satisfaction into a **binary classification** task based on distribution analysis. |
+| Feature engineering for `job_duration`             | Created a new variable to capture job tenure based on the start year of the current job. |
+| Aggregation of categorical variables               | Combined low-frequency categories (e.g., ethnicity, region) to avoid sparsity and improve model robustness. |
+| One-hot encoding for categorical variables         | Ensured models could interpret categorical variables by converting them into binary vectors. |
+| Standard Scaler                                    | Standardized numeric features to ensure features were on a comparable scale. |
+| Addressing class imbalance using SMOTE             | Applied **SMOTE**, oversampling, to create synthetic examples and address class imbalance (90% 'High Satisfaction'). |
+
+Through the data cleaning and preprocessing steps, the dataset was refined and optimized for machine learning models, ensuring that both the quality and usability of the data were maintained throughout the project.
+
+For more detail, see our notebooks on preprocessing:
+
+1. [Merging Survey Data](../notebooks/02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb)
+2. [Initial Preprocessing](../notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
+3. [Preparation for Advanced Modelling](../notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
+
+---
+
+# 2. Insights from Exploratory Data Analysis and baseline modelling
+
+### (a)  Many respondents felt their job is important to society...and aligned well to the degree they studied. Perhaps these are good indicators of 'high satisfaction'?
+![job importance](../visualisations/jobimportance.png)
+
+* #### Over 50% report their job as ‘very important’ to society
+
+* #### Over 60% report their job as ‘closely related’ to their academic background. Another potential indicator of ‘highly satisfied’ employees
+
+### (b)  Our correlation matrix showed the statistical significance of a lot of features in the dataset in influencing 'high job satisfaction'...
+![corr](../visualisations/corr.png)
+
+##### 1. Our newly constructed `job_duration` matters - and has the potential to positively influence job satisfaction
+
+##### 2. Components of job satisfaction scores, like your `satisfaction with career advancement opportunities, benefits and intellectual challenge' are signficiant influences on job satisfaction (deeper shades of red indicating stronger positive Pearson's correlation coefficients)
+
+##### 3. Sentiments may vary by year of survey, for example respondents asked during a post Covid era (2021) may not have been as satisfied as their counterparts form previous years
+
+### (c)  Results from our **baseline** logistic regression confirmed a lot of our hypotheses, telling us the top 'predictors' of job satisfaction...
+
+#### Highlights included, satisfaction with career advancement as **key**, job tenure, relevance to the degree you studied (people want to use the skills they learnt!), salary, and even marital status.
+![base_logit_predictors](../visualisations/base_pos_predictors.png)
+
+### (d)  In fact, this shed light on which features could increase or decrease your odds of being highly satisfied with your work...
+
+* #### Those who studied a professional degree or phd maybe less likely to be satisfied with their work, as could being surveyed during 2021. 
+* #### In contrast, ethnicity (white) could increase your odds of satisfaction in the workplace, as well as a range of select occupations and employment sectors...
+
+![base_oddspredictors](../visualisations/base_odds.png)
+
+# 3. Model construction and evaluation
+
+### We wanted to go beyond this to see if we could improve our ability to classify 'Highly Satisfied' versus 'Unsatisfied' employees, developing a modelling roadmap:
+
+### (a) Here's a recap of the 4 models we constructed, and key techniques and hyperparameter tuning:
+
+![Model Roadmap](../visualisations/model_roadmap.png)
+
+### (b) Random Forest came out on top, for both train...and test data accuracy
+![train_test_accuracy](../visualisations/train_test_accuracy.png)
+
+### (c) All models did better than 'random guessing', with the most complex models doing best (Random Forest and Neural Network)
+
+#### Across all thresholds, Random Forest had the highest overall performance with an AUC score of 0.91:
+![roc](../visualisations/roc.png)
+
+### (d) We saw good performance across classification accuracy for 'High Satisfaction' (Class 1)
+
+* #### Our Random Forest model still came out on top in this area
+
+* #### Whilst our neural network wasn’t the best overall, it’s precise in predicting ‘highly satisfied’ individuals
+
+![class1](../visualisations/class1.png)
+
+### (e) Performance was less consistently good for identifying 'High Satisfaction' (Class 1)
+
+* #### Our Random Forest model still came out on top in this area - but it doesn’t do as well with spotting all unsatisfied respondents (Recall)
+
+* #### Whilst our neural network wasn’t the best overall, it has better recall: identifying unsatisfied individuals
+![class0](../visualisations/class0.png)
+
+### (f) There's room for improvement for both our Random Forest and Neural Network models...
+
+#### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
+<div style="display: flex; justify-content: space-between;">
+    <div style="text-align: center;">
+        <img src="../visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 85%;">
+        <p>Confusion Matrix - Random Forest</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="../visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 85%;">
+        <p>Confusion Matrix - Neural Network</p>
+    </div>
+</div>
+
+### How can we interpret these confusion matrices?
+
+1. The Random Forest performs well in predicting 'High Satisfaction' but struggles with 'Low Satisfaction', primarily due to the high number of false positives. Improving minority class precision could significantly enhance model performance.
+
+2. The Neural Network shows better performance in predicting 'Low Satisfaction' with fewer false positives, but at the cost of a higher number of false negatives for 'High Satisfaction.' This indicates a trade-off between precision for Class 0 and recall for Class 1.
+
+So future iterations of the models need to work at addressing these misclassifications. Here are some recommendations:
+### Overall recommendations for improving model performance
+
+Given that class imbalance techniques (such as SMOTE) have already been applied, our next steps should focus on **refining and optimising hyperparameters** using robust approaches like **RandomizedSearchCV** for broader exploration and **GridSearchCV** for fine-tuning. Below are specific recommendations for improving performance through better hyperparameter tuning approaches and alternative models:
+
+#### 1. Hyperparameter Tuning for Random Forest:
+
+- **RandomizedSearchCV**: This approach is ideal for exploring a wide range of hyperparameters without the computational intensity of an exhaustive search. We can use this to identify key hyperparameters such as tree depth, number of trees, and sample sizes that offer a good trade-off between model complexity and performance.
+  
+- **GridSearchCV**: After narrowing down promising ranges through RandomizedSearchCV, we can apply **GridSearchCV** to more precisely fine-tune specific hyperparameters. This approach works well once a range has been identified, allowing for an exhaustive search within smaller parameter spaces, ensuring optimal model performance.
+
+#### 2. Hyperparameter Tuning for Neural Network:
+
+- **RandomizedSearchCV**: Neural Networks involve multiple key hyperparameters (learning rate, dropout rate, batch size, etc.), and RandomizedSearchCV provides a more efficient way to explore these combinations broadly. This can help identify ranges of values that yield the best performance in terms of both precision and recall.
+  
+- **GridSearchCV**: Once we’ve identified potential ranges through RandomizedSearchCV, use **GridSearchCV** to more rigorously tune these parameters. This focused search will help achieve the best balance between model generalization and overfitting, especially when optimizing dropout, regularization, and learning rates.
+
+### Why bother?
+
+1. Our Random Forest model will provide great insight into drivers of 'High Satisfaction' and greater accurayc of classifying these satisfied individuals - important for understanding how common high satisfaction is, and 'ingredients of success'
+
+2. While Neural Networks are computationally expensive, it has really good potential to **better identify unsatisfied individuals** (minority class) and provide isnights into how we can target and drive up satisfaction for these employee groups. So it's certainly worth the time and effort to tune this further!
 
 
-# 5. Summary
+# 4. Findings from Machine Learning Classification: Feature importance
 
-Based on what we've learned throughout our EDA here are some key hypotheses we constructed, feature variables of interest, and next steps for predicting whether an individual is "highly satisfied" with their job:
+### (a) We analysed feature importance from our best-performing model, the Random Forest, to understand which factors are most influential in predicting job satisfaction.
 
-1. Key Hypotheses:
+### Feature Importance (MDI) from Random Forest
 
-* Job Duration Hypothesis: Longer job duration (in months or years) is positively associated with higher job satisfaction. Those who have been in their jobs longer are more likely to be highly satisfied.
+This chart shows the **Top 10 Feature Importances** from the Random Forest model using the **Mean Decrease in Impurity (MDI)** method, which is a common technique to estimate feature importance in tree-based models.
 
-* Salary Hypothesis: Higher salaries are associated with higher job satisfaction. Individuals with higher salaries are more likely to report being highly satisfied.
+![MDI](../visualisations/mdi.png)
 
-* Work Benefits and Security Hypothesis: Factors like job benefits, advancement opportunities, and job security contribute to higher satisfaction. Individuals who report satisfaction in these areas are more likely to be highly satisfied overall.
+#### What MDI Means:
+- **MDI (Mean Decrease in Impurity)** measures the total decrease in **Gini impurity** or **entropy** across all trees in the forest that a particular feature contributes to when making splits. 
+- Essentially, MDI quantifies how much a feature helps reduce uncertainty or "impurity" about the outcome (in this case, job satisfaction).
+- The larger the mean decrease in impurity for a feature, the more important it is deemed to be in predicting the target variable.
 
-* Job-Related Contribution Hypothesis: Individuals who feel their job contributes to society or is aligned with their degree may experience higher job satisfaction.
+#### Key Observations:
+1. **Satisfaction with Career Advancement** is by far the most important feature, with the highest MDI score. This aligns well with our overall hypothesis and problem statement. Jobseekers and employees are likely to place great value on opportunities for growth, and satisfaction with career advancement has emerged as a key driver for predicting overall job satisfaction.
 
-* Employer Characteristics Hypothesis: Employer sector (e.g., public, private) and size might influence job satisfaction. For instance, larger employers might provide more job security or benefits that could increase satisfaction.
+2. **Satisfaction with Intellectual Challenge during Job** also ranks highly in feature importance. This emphasises the importance of engaging, meaningful work—again, a key consideration in why people might report high satisfaction with their jobs.
 
-* Personal and Demographic Factors Hypothesis: Variables like age, marital status, gender, and certifications may influence job satisfaction. For example, having certifications or more life stability (marital status, children) may be linked to higher satisfaction.
+3. **Satisfaction with Salary** ranks third in importance. While salary is often viewed as a primary determinant of job satisfaction, it is noteworthy that **non-monetary factors** such as career advancement and intellectual challenge rank higher. This reinforces the idea that **intrinsic rewards** play a significant role in overall job satisfaction.
 
-Key Feature Variables of Interest:
+4. **Satisfaction with Job Security** is next in line. This suggests that stability and long-term security are still critical factors in job satisfaction, especially in uncertain economic times.
 
-Job Duration `job_duration_months`: Measuring the length of time in the current job.
+5. **Satisfaction with Job Location**, while less important than the aforementioned factors, still holds weight in determining job satisfaction, indicating that work-life balance and geographical considerations matter to employees.
 
-Salary `salary`: The individual's salary level.
+#### Less Important Features:
+- **Age**, **Salary (raw variable)**, and **Job Duration (Months)** have lower importance in this model. Although job tenure and salary are important for career longevity and income, they do not seem to influence satisfaction as heavily as subjective feelings about career progression, job security, or intellectual challenge.
 
-Job Benefits `satisfaction_benefits`: Satisfaction with benefits.
+- The **survey year** is included in the top 10 but ranks lower, showing that while there may be year-over-year trends in satisfaction, it is not a dominant factor.
 
-Advancement Opportunities `satisfaction_advancement`: Satisfaction with job advancement opportunities.
+#### How This Tallies with Previous Interpretations:
 
-Job Security `satisfaction_security`: Perception of job security.
+- This ranking of feature importance supports the **story we've been telling** through our exploratory data analysis (EDA) and model evaluations: 
+  - **Non-monetary factors** such as satisfaction with career growth, intellectual stimulation, and job security have a significant impact on overall job satisfaction.
+  - While salary and job tenure matter, they play a **secondary role** compared to factors that relate to personal fulfillment and job stability.
+  
+- The model results suggest that **career development** and opportunities for **challenging, meaningful work** are the strongest predictors of high job satisfaction, which is consistent with the narrative we’ve been building throughout our analysis.
 
-Societal Contribution `importance_society_contribution`: How important the individual perceives their job's contribution to society.
+By focusing on these core drivers of satisfaction, we can provide actionable insights for both **jobseekers** and **policymakers**, reinforcing the value of aligning personal career goals with workplace opportunities for growth, stability, and intellectual engagement.
 
-Job-Degree Relation `job_degree_relation`: Whether the job aligns with the individual's degree.
+### We also explored local interpretations using **LIME** (Local Interpretable Model-agnostic Explanations), a technique that helps explain what features contribute most to an individual’s probability of high job satisfaction.
 
-Employer Sector `employer_sector`: Type of employer.
+### What is LIME?
 
-Employer Size `employer_size_category`: Size of the employer.
+The goal is to interpret individual predictions for job satisfaction using LIME (Local Interpretable Model-agnostic Explanations). LIME provides local explanations, meaning it explains how certain features of a particular instance influence that specific prediction (whether it’s predicting high or low satisfaction).
 
-Certifications `active_certifications`: The number of active certifications.
+In this case, we're plotting the probability scores for four individual test instances. Each plot shows the model's predicted probability of 'High Satisfaction' vs. 'Low Satisfaction' for a single person or 'test instance', using 4 different rows of our X_test data. 
 
-Demographic Factors: `Age`, `marital status`, `female`, and `children_in_household`.
+## Putting this in practice
+
+Let's take one of the examples/test instances we ran, as a potential user who's interested in learning about what could be informing their job satisfaction.
+
+In this case our random forest model and LIME seeks to explain one of the 'test instances' we see, to explain the probability score, and contributing factors:
+
+## For one particular test instance, it outputs the following probability score and feature importance/coefficients:
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="text-align: center;">
+        <img src="../visualisations/lime_test_predprob.png" alt="LIME Predicted Probabilities" style="width: 95%;">
+        <p>LIME Predicted Probabilities</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="../visualisations/lime_test_factors.png" alt="LIME Contributing Factors" style="width: 95%;">
+        <p>LIME Test Factors</p>
+    </div>
+</div>
+
+## What could this be telling us?
+
+1. For this particular individual, they're highly likely to experience high job satisfaction (81% likely)
+
+2. From training our model, factors like their age, company size and emloyer sector are likely to be some of the factors pushing their likelihood of 'high satisfaction' up
+
+3. In contrast, it looks like their satisfaction with career advancement could be driving their satisfaction **down**, so the user may want to look into what their levels of satisfaction are and whether this needs further investigation.
+
+# 5. 'So what?' Value for policymakers and jobseekers
+
+#### Given someone with a similar profile/attributes to what they've inputted, the model predicts their likelihood of job satisfaction and identifies contributing factors. This can be valuable for both **policymakers** and **jobseekers** in the following ways:
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="width: 40%; text-align: center;">
+        <img src="../interactive_app/policy.png" alt="policymakers" style="width: 55%;">
+    </div>
+    <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
+        <h3 style="font-size: 26px;">1. Value for Policymakers</h3>  <!-- Increased heading size -->
+        <ul>
+            <li><strong>Explore and address wider disparities in job satisfaction</strong> - the model can reveal which demographics, industries, or regions experience lower satisfaction, offering data-driven guidance on where interventions may be most needed.</li>
+            <li><strong>Use insights to formulate targeted labour market interventions</strong> - by understanding which factors (e.g., salary, job security, career advancement) are key drivers, policymakers can craft policies to improve conditions where it matters most.</li>
+            <li><strong>Revise and update the predictive model against a changing landscape</strong> - the labor market is dynamic, and regular updates to the model can ensure that insights remain relevant as the job market evolves.</li>
+        </ul>
+    </div>
+</div>
+
+# 6. Next Steps
+
+While we've demonstrated the value of the model using tools like **LIME** to explain individual predictions, there are several key steps ahead to further develop this work into a robust **proof of concept application**.
+
+## 1. In-depth Hyperparameter Tuning for the Neural Network
+The current model performance has provided valuable insights, but there is room for improvement, particularly with the **Neural Network** model. Future iterations will focus on:
+- **GridSearchCV** and **RandomizedSearchCV** for hyperparameter tuning.
+- Fine-tuning parameters such as **learning rate**, **batch size**, **regularization strength**, and **number of layers/neurons** to optimize the **classification accuracy**.
+- Experimenting with advanced techniques like **dropout** and **early stopping** to prevent overfitting and enhance generalization.
+
+## 2. Web Scraping Job Forums and Postings
+To enrich the model’s understanding of **job satisfaction drivers**, web scraping techniques will be employed to gather data from:
+- **Job forums** where employees discuss their job experiences, challenges, and satisfaction levels.
+- **Job postings** to analyze trends in skill requirements, job roles, benefits, and perks that may influence job satisfaction.
+- This unstructured data will help **complement** the existing dataset and provide additional insights into emerging trends and employee expectations.
+
+## 3. Developing the Proof of Concept Application and Use Case
+
+The end goal is to explore the development of an application that enables:
+
+- **Jobseekers** to input their profile details and receive predictions about their likelihood of job satisfaction, as well as the factors contributing to that prediction.
+- **Policymakers** to explore trends in job satisfaction across industries, demographics, and geographies, allowing for targeted interventions.
+
+**Key features of the proof of concept application**:
+
+- **User-friendly interface** that visualizes predictions and provides explanations using LIME.
+- **Customisable inputs** for jobseekers to adjust variables such as salary expectations, job location, and role-specific factors.
+- **Real-time data** updates from job postings to keep the model relevant in a changing labor market.
+
+By iterating on these next steps, this model can evolve into a valuable tool for both **jobseekers** and **policymakers**, offering actionable insights into job satisfaction and its key drivers.
 
 
-#### Check out key visualisations illustrating job satisfaction scores. popular degree subjects across survey respondents, and an investigation of median salary by US region:
+# 7. Final Comments and Reflections
 
-* ![Job satisfaction scores across survey respondents](./visualisations/jobsat.png)
-* ![Top 10 degree subjects across survey respondents](./visualisations/top10degrees.png)
-* [Investigation of median salary by US region - html file](./visualisations/map.html)
+This project was a rewarding experience, offering me the chance to work with rich data and apply a variety of machine learning techniques. Below are some reflections on the process:
 
+- **Key Challenges**:
+  1. Navigating and cleaning multiple years of survey data in different formats was time-consuming but essential to ensure consistency, and readable names of survey questions oftened coded as a string of numbers.
+  2. Addressing class imbalance (90% majority class) through techniques like **SMOTE** to improve prediction for underrepresented cases of 'Low Satisfaction.'
+  3. Selecting the most relevant features from over 200+ survey questions, and applying domain knowledge to filter down to job-related variables.
 
-### Baseline Model findings: Logistic Regression (coefficients, odds ratio, and model performance)
+- **What I Loved**:
+  1. Exploring different machine learning models (from Decision Tree to Neural Network) and tuning hyperparameters to enhance performance.
+  2. Visualising job satisfaction insights through tools like **Matplotlib** and **LIME**, and seeing how individual features contribute to predictions.
+  3. Creating the **proof of concept** for a predictive tool that can provide real value to jobseekers and policymakers.
 
-#### Overall, we learnt about key actionable insights for our stakeholders, including jobseekers and labour market policymakers. These linked to:
+- **Technical Skills Showcased**:
+  1. Advanced **data preprocessing** and **feature engineering**, including constructing meaningful variables like **job duration**, using loops and functions to make mergin data more efficient
+  2. Mastery of **Logistic Regression**, **Random Forests**, and exploration of **Neural Networks** with detailed hyperparameter tuning.
+  3. Applying **explainable AI** techniques with **LIME** to interpret model predictions and generate actionable insights.
 
-* **Satisfaction with career advancement as the biggest predictor of overall job satisfaction.**
+- **Excitement for Policymakers**:
+  1. I'm excited about the potential of this tool to help policymakers explore the **drivers of job satisfaction** across various demographics and industries.
+  2. With real-time data and future enhancements, this model could serve as a valuable resource for creating **targeted labor market interventions** and improving job conditions.
 
-* Career growth is a huge factor for employees, and influences their job satisfaction. Holding all else constant, it continues to be a signifciant predictor suggesting salary alone doesn't suffice.
+This project has been a fantastic opportunity to combine technical skills with impactful real-world applications, and I look forward to further developing it!
 
-#### Other learnings included:
+---
+#### Links to primary datasets used for this project
 
-**Employer Size**
+https://ncses.nsf.gov/surveys/national-survey-college-graduates/2021
+https://ncses.nsf.gov/423/assets/0/file/ncses_nscg.pdf
+https://ncses.nsf.gov/pubs/nsf23306/assets/nsf23306.pdf
+https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates
 
-* Finding: Graduates in smaller companies report higher job satisfaction.
-* Policy Insight: Promote opportunities in SMEs, as they may offer more personalized career growth and contribute positively to job satisfaction and the economy.
+---
 
-**Ethnicity**
-
-* Finding: White graduates report slightly higher job satisfaction.
-* Policy Insight: Address disparities in job satisfaction across ethnic groups by investigating and addressing contributing factors.
-
-**Degree Relevance and Field:**
-
-* Finding: Graduates working in fields related to their degrees report higher job satisfaction.
-* Policy Insight: Align higher education programs with job opportunities to boost job satisfaction for graduates.
-
-#### We also learnt more about our model performance, to inform our next steps as part of our modelling roadmap:
-
-* Accuracy: we saw a marginal improvement in our train accuracy after carrying out backwards selection on a logistic regression model. However, when we evaluate performance on unseen data, we can see clear overfitting of our model to the training data - our test accuracy was much lower at 63%.
-
-* High Precision for Positive Class: This indicates that the model is reliable in predicting high satisfaction, but we need to ensure it also identifies all true positives. Improve recall for high satisfaction by potentially adjusting the classification threshold or using techniques like oversampling the minority class.
-
-* Low Recall for Positive Class: Address the high number of false negatives by exploring other models or techniques that might capture more positives, such as ensemble methods or different threshold settings.
-
-### Organization
-
-#### Structure of notebooks
-
-Located in the `notebooks` section of this repo, here's an overview of what these notebooks cover:
-
-- [Introduction to data and preliminary EDA](./notebooks/01%20Introduction%20to%20Data%20and%20Preliminary%20EDA.ipynb): This notebook introduces the data we're focusing on, with initial EDA for 2021 survey data.
-- [Merging data and preprocessing](./notebooks/02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb): This notebook merges all survey data acorss 2015, 2017, 2019, 2021 getting this ready for in-depth EDA and preprocessing for our baseline modelling.
-- [Further EDA](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynbb): This notebook conducts in-depth exploration of our fully merged and cleaned dataset.
-- [Baseline Modelling](./notebooks/04%20Baseline:%20Logistic%20Regression.ipynb): In this notebook, we train our 'base model': logistic regression using statsmodel.
-- [Model 1: Decision Tree](./notebooks/05%20Model%201:%20Decision%20Tree.ipynb). Here, we transition to more advanced modelling and ML techniques, based on learnings from our base model.
-
-
-#### Repository 
+# 8. Note on Repository 
 
 * `data` and `data_for_eda`
     - contains link to copy of the dataset 
     - saved copy of aggregated / processed data
 
-* `model`
-    - `joblib` dump of final model(s); *to be updated*
+
+* `interactive_app`
+    - Contains the code for the interactive proof-of-concept application that predicts job satisfaction.
+    - Uses preprocessed data and models to provide real-time predictions for jobseekers and insights for policymakers.
+
+* `models`
+    - `joblib` dump of final model(s)
 
 * `notebooks`
-    - contains all final notebooks involved in the project
+    - Contains all final notebooks involved in the project
+
+* `preprocessed_variables`
+    - Contains preprocessed datasets that were produced after extensive preprocessing.
+    - These datasets are crucial for model evaluation and to feed into the interactive application.
+    - Includes scaled, encoded, and resampled datasets ready for modeling.
 
 * `project_docs`
     - contains presentations from sprint 1 to 3, and additional supplementary materials where appropriate
@@ -197,23 +442,37 @@ Located in the `notebooks` section of this repo, here's an overview of what thes
     - contains any academic papers of literature used to inform this project
 
 * `src`
-    - Contains the project source code (refactored from the notebooks): *to be updated*
+    - Currently not in use. The project is primarily developed and analyzed through Jupyter notebooks.
+    - If future development requires, the `src` folder can be used for modular Python scripts refactored from the notebooks.
+
+
+* `visualisations`
+    - Contains aany key output figures, plots, and graphs generated during analysis and modeling.
+    - Includes confusion matrices, feature importance plots, and relevant visualisations used in notebooks and presentations.
 
 * `.gitignore`
     - Part of Git, includes files and folders to be ignored by Git version control
 
 * `nivi_capstone.yml`
-    - Conda environment specification for my capstone project
-
+    - Conda environment specification for this project
 * `README.md`
     - Project landing page (this page)
 
 * `LICENSE`
-    - Project license
+    Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 
-#### Links to primary datasets used for this project
+    Copyright (C) 2024 Nivedita Prasad
 
-https://ncses.nsf.gov/surveys/national-survey-college-graduates/2021
-https://ncses.nsf.gov/423/assets/0/file/ncses_nscg.pdf
-https://ncses.nsf.gov/pubs/nsf23306/assets/nsf23306.pdf
-https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates
+    This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+
+    You are free to:
+    - **Share** — copy and redistribute the material in any medium or format
+    - The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+    Under the following terms:
+    - **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+    - **NonCommercial** — You may not use the material for commercial purposes.
+    - **NoDerivatives** — If you remix, transform, or build upon the material, you may not distribute the modified material.
+
+    No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+

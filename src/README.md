@@ -1,7 +1,4 @@
 # Source Code
 
-Describe the additional code created for the project which may include:
-
-- scripts to automate data loading and processing,
-- scripts to train and evaluate models,
-- applications to demo your data science solution, such as a `Flask` or `streamlit` app.
+    - Currently not in use. The project is primarily developed and analysed through Jupyter notebooks.
+    - If future development requires, the `src` folder will be used for modular Python scripts refactored from the notebooks.
