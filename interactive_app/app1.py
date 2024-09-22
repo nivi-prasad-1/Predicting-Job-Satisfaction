@@ -11,7 +11,7 @@ import lime
 import lime.lime_tabular
 
 # Set page configuration
-st.set_page_config(page_title="Job Satisfaction Predictive Tool", layout="wide")
+st.set_page_config(page_title="Who's likely to love their job? A Predictive Tool for Job Satisfaction and Key Drivers", layout="wide")
 
 # Load models and datasets
 rf_model = joblib.load('./models/best_model_rf.pkl')  # Random Forest model
