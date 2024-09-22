@@ -37,11 +37,6 @@
 
 ---
 
-## 1. Summary of Data Cleaning and Preprocessing
-
-### 1.1 Links to
-
-
 # Problem Space 
 
 Finding a job we ‘love’ is hard and critical in today’s labor market to support productivity and wellbeing - and something we can all relate to on a personal level.
