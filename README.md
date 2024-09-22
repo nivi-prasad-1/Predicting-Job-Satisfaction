@@ -1,7 +1,7 @@
 <!-- Images above the title -->
 <div style="text-align: center;">
-    <img src="../capstone_template/interactive_app/image1.png" alt="Image 1" style="width: 200px; margin-right: 20px;"/>
-    <img src="../capstone_template/interactive_app/image2.png" alt="Image 2" style="width: 200px;"/>
+    <img src="./interactive_app/image1.png" alt="Image 1" style="width: 200px; margin-right: 20px;"/>
+    <img src="./interactive_app/image2.png" alt="Image 2" style="width: 200px;"/>
 </div>
 
 <!-- Centered title with styling -->
@@ -93,7 +93,7 @@ The process of cleaning the data involved multiple steps to ensure consistency a
 
 ### (a) Our original distribution of overall satisfaction scores indicated potential for binary classification - respondents generally liked their jobs
 
-![Overall satisfaction](../visualisations/overall_satscore.png)
+![Overall satisfaction](./visualisations/overall_satscore.png)
 
 The majority of respondents fall into the two highest satisfaction categories: 
 
@@ -107,7 +107,7 @@ Thus, the decision to code the target variable as a binary classification of **'
 
 ### (b) Components of 'overall job satisfaction' showed a similar distribution - suggesting focusing on 'overall' satisfaction is more suited as our target
 
-![Job Satisfaction Scores](../visualisations/satscores.png)
+![Job Satisfaction Scores](./visualisations/satscores.png)
 
 #### Instead, this suggested that a more interesting area of exploration would be **how much are these other components of job satisfaction contributing to our overall job sa**tisfaction?'**
 
@@ -115,11 +115,11 @@ Thus, the decision to code the target variable as a binary classification of **'
 
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="../visualisations/target_before_SMOTE.png" alt="Before SMOTE" style="width: 65%;">
+        <img src="./visualisations/target_before_SMOTE.png" alt="Before SMOTE" style="width: 65%;">
         <p>Target Distribution Before SMOTE</p>
     </div>
     <div style="text-align: center;">
-        <img src="../visualisations/target_after_SMOTE.png" alt="After SMOTE" style="width: 65%;">
+        <img src="./visualisations/target_after_SMOTE.png" alt="After SMOTE" style="width: 65%;">
         <p>Target Distribution After SMOTE</p>
     </div>
 </div>
@@ -141,23 +141,23 @@ Through the data cleaning and preprocessing steps, the dataset was refined and o
 
 For more detail, see our notebooks on preprocessing:
 
-1. [Merging Survey Data](../notebooks/02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb)
-2. [Initial Preprocessing](../notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
-3. [Preparation for Advanced Modelling](../notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
+1. [Merging Survey Data](./notebooks/02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb)
+2. [Initial Preprocessing](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
+3. [Preparation for Advanced Modelling](./notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
 
 ---
 
 # 2. Insights from Exploratory Data Analysis and baseline modelling
 
 ### (a)  Many respondents felt their job is important to society...and aligned well to the degree they studied. Perhaps these are good indicators of 'high satisfaction'?
-![job importance](../visualisations/jobimportance.png)
+![job importance](./visualisations/jobimportance.png)
 
 * #### Over 50% report their job as ‘very important’ to society
 
 * #### Over 60% report their job as ‘closely related’ to their academic background. Another potential indicator of ‘highly satisfied’ employees
 
 ### (b)  Our correlation matrix showed the statistical significance of a lot of features in the dataset in influencing 'high job satisfaction'...
-![corr](../visualisations/corr.png)
+![corr](./visualisations/corr.png)
 
 ##### 1. Our newly constructed `job_duration` matters - and has the potential to positively influence job satisfaction
 
@@ -168,14 +168,14 @@ For more detail, see our notebooks on preprocessing:
 ### (c)  Results from our **baseline** logistic regression confirmed a lot of our hypotheses, telling us the top 'predictors' of job satisfaction...
 
 #### Highlights included, satisfaction with career advancement as **key**, job tenure, relevance to the degree you studied (people want to use the skills they learnt!), salary, and even marital status.
-![base_logit_predictors](../visualisations/base_pos_predictors.png)
+![base_logit_predictors](./visualisations/base_pos_predictors.png)
 
 ### (d)  In fact, this shed light on which features could increase or decrease your odds of being highly satisfied with your work...
 
 * #### Those who studied a professional degree or phd maybe less likely to be satisfied with their work, as could being surveyed during 2021. 
 * #### In contrast, ethnicity (white) could increase your odds of satisfaction in the workplace, as well as a range of select occupations and employment sectors...
 
-![base_oddspredictors](../visualisations/base_odds.png)
+![base_oddspredictors](./visualisations/base_odds.png)
 
 # 3. Model construction and evaluation
 
@@ -183,15 +183,15 @@ For more detail, see our notebooks on preprocessing:
 
 ### (a) Here's a recap of the 4 models we constructed, and key techniques and hyperparameter tuning:
 
-![Model Roadmap](../visualisations/model_roadmap.png)
+![Model Roadmap](./visualisations/model_roadmap.png)
 
 ### (b) Random Forest came out on top, for both train...and test data accuracy
-![train_test_accuracy](../visualisations/train_test_accuracy.png)
+![train_test_accuracy](./visualisations/train_test_accuracy.png)
 
 ### (c) All models did better than 'random guessing', with the most complex models doing best (Random Forest and Neural Network)
 
 #### Across all thresholds, Random Forest had the highest overall performance with an AUC score of 0.91:
-![roc](../visualisations/roc.png)
+![roc](./visualisations/roc.png)
 
 ### (d) We saw good performance across classification accuracy for 'High Satisfaction' (Class 1)
 
@@ -199,25 +199,25 @@ For more detail, see our notebooks on preprocessing:
 
 * #### Whilst our neural network wasn’t the best overall, it’s precise in predicting ‘highly satisfied’ individuals
 
-![class1](../visualisations/class1.png)
+![class1](./visualisations/class1.png)
 
 ### (e) Performance was less consistently good for identifying 'High Satisfaction' (Class 1)
 
 * #### Our Random Forest model still came out on top in this area - but it doesn’t do as well with spotting all unsatisfied respondents (Recall)
 
 * #### Whilst our neural network wasn’t the best overall, it has better recall: identifying unsatisfied individuals
-![class0](../visualisations/class0.png)
+![class0](./visualisations/class0.png)
 
 ### (f) There's room for improvement for both our Random Forest and Neural Network models...
 
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="../visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 85%;">
+        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 85%;">
         <p>Confusion Matrix - Random Forest</p>
     </div>
     <div style="text-align: center;">
-        <img src="../visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 85%;">
+        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 85%;">
         <p>Confusion Matrix - Neural Network</p>
     </div>
 </div>
@@ -260,7 +260,7 @@ Given that class imbalance techniques (such as SMOTE) have already been applied,
 
 This chart shows the **Top 10 Feature Importances** from the Random Forest model using the **Mean Decrease in Impurity (MDI)** method, which is a common technique to estimate feature importance in tree-based models.
 
-![MDI](../visualisations/mdi.png)
+![MDI](./visualisations/mdi.png)
 
 #### What MDI Means:
 - **MDI (Mean Decrease in Impurity)** measures the total decrease in **Gini impurity** or **entropy** across all trees in the forest that a particular feature contributes to when making splits. 
@@ -311,11 +311,11 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="../visualisations/lime_test_predprob.png" alt="LIME Predicted Probabilities" style="width: 95%;">
+        <img src="./visualisations/lime_test_predprob.png" alt="LIME Predicted Probabilities" style="width: 95%;">
         <p>LIME Predicted Probabilities</p>
     </div>
     <div style="text-align: center;">
-        <img src="../visualisations/lime_test_factors.png" alt="LIME Contributing Factors" style="width: 95%;">
+        <img src="./visualisations/lime_test_factors.png" alt="LIME Contributing Factors" style="width: 95%;">
         <p>LIME Test Factors</p>
     </div>
 </div>
@@ -334,7 +334,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="width: 40%; text-align: center;">
-        <img src="../interactive_app/policy.png" alt="policymakers" style="width: 55%;">
+        <img src="./interactive_app/policy.png" alt="policymakers" style="width: 55%;">
     </div>
     <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
         <h3 style="font-size: 26px;">1. Value for Policymakers</h3>  <!-- Increased heading size -->
