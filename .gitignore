@@ -7,11 +7,11 @@ data/
 
 # Ignore all *.pkl files
 *.pkl
-./models/*
-./preprocessed_variables/*
+models/*.pkl
+preprocessed_variables/*.pkl
 
 # Ignore macOS system file
 .DS_Store
 
 # Ignore all files in models/logs/
-./models/logs/*
+models/logs/
