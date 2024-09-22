@@ -4,3 +4,9 @@ data/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Ignore preprocessed variable files
+preprocessed_variables/*.pkl
+
+# Ignore large model files
+models/*.pkl
