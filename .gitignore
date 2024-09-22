@@ -8,7 +8,7 @@ data/
 # Ignore all *.pkl files
 *.pkl
 models/
-preprocessed_variables/
+preprocessed_variables/*
 
 # Ignore macOS system file
 .DS_Store
