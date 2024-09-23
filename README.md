@@ -350,7 +350,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
         <h3 style="font-size: 26px;">2. Value for Job Seekers</h3>  <!-- Increased heading size -->
         <ul>
             <li><strong>Understand the key drivers of job satisfaction</strong> - the app helps job seekers identify which factors, such as salary, work-life balance, career advancement, or job security, play the most significant role in overall job satisfaction.</li>
-            <li><strong>Personalize your job search</strong> - by honing in on the aspects of a job that matter most to you, the app provides tailored job recommendations that align with your priorities for satisfaction, helping you make more informed decisions.</li>
+            <li><strong>Personalise your job search</strong> - by honing in on the aspects of a job that matter most to you, the predictive tool has the potential to provide tailored job recommendations that align with your priorities for satisfaction, helping you make more informed decisions.</li>
             <li><strong>Track evolving job satisfaction trends</strong> - as the job market evolves, the app can help you stay updated on which industries or roles offer higher satisfaction, allowing you to adjust your career goals accordingly.</li>
         </ul>
     </div>
