@@ -189,15 +189,7 @@ For more detail, see our notebooks on preprocessing:
 #### Across all thresholds, Random Forest had the highest overall performance with an AUC score of 0.91:
 ![roc](./visualisations/roc.png)
 
-### (d) We saw good performance across classification accuracy for 'High Satisfaction' (Class 1)
-
-* #### Our Random Forest model still came out on top in this area
-
-* #### Whilst our neural network wasn’t the best overall, it’s precise in predicting ‘highly satisfied’ individuals
-
-![class1](./visualisations/class1.png)
-
-### (e) There's room for improvement for both our Random Forest and Neural Network models...
+### (d) We saw good classification accuracy, but there's room for improvement for both our Random Forest and Neural Network models...
 
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
