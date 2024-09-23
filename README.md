@@ -220,11 +220,17 @@ Given that class imbalance techniques (such as SMOTE) have already been applied,
   
 - **GridSearchCV**: After narrowing down promising ranges through RandomizedSearchCV, we can apply **GridSearchCV** to more precisely fine-tune specific hyperparameters. This approach works well once a range has been identified, allowing for an exhaustive search within smaller parameter spaces, ensuring optimal model performance.
 
+#### 2. Consider Alternative Models:
+
+- **Gradient Boosting (e.g., XGBoost, LightGBM)**: These models are well-suited for handling imbalanced datasets and often outperform Random Forests in many cases. We might start with **RandomizedSearchCV** to explore a broad range of hyperparameters (e.g., boosting rounds, learning rates, tree depth) and then fine-tune with **GridSearchCV** once the optimal ranges have been identified.
+
+- **Threshold Tuning**: Consider adjusting the decision threshold for classification. Instead of using the default threshold (e.g., 0.5), use **precision-recall curves** to find an optimal threshold that minimizes false positives for 'Low Satisfaction' while maintaining high recall for 'High Satisfaction.'
+
 
 
 ### Why bother?
 
-1. Our Random Forest model will provide great insight into drivers of 'High Satisfaction' and greater accurayc of classifying these satisfied individuals - important for understanding how common high satisfaction is, and 'ingredients of success'
+1. Our Random Forest model will provide great insight into drivers of 'High Satisfaction' and greater accuracy of classifying these satisfied individuals - important for understanding how common high satisfaction is, and 'ingredients of success'
 
 2. While Neural Networks are computationally expensive, it has really good potential to **better identify unsatisfied individuals** (minority class) and provide isnights into how we can target and drive up satisfaction for these employee groups. So it's certainly worth the time and effort to tune this further!
 
@@ -349,12 +355,13 @@ The end goal is to explore the development of an application that enables:
 
 **Key features of the proof of concept application**:
 
-- **User-friendly interface** that visualizes predictions and provides explanations using LIME.
+- **User-friendly interface** that visualises predictions and provides explanations using LIME.
 - **Customisable inputs** for jobseekers to adjust variables such as salary expectations, job location, and role-specific factors.
 - **Real-time data** updates from job postings to keep the model relevant in a changing labor market.
 
 By iterating on these next steps, this model can evolve into a valuable tool for both **jobseekers** and **policymakers**, offering actionable insights into job satisfaction and its key drivers.
 
+*Watch this space for a demo of our proof-of-concept Streamlit app...*
 
 # 7. Final Comments and Reflections
 
