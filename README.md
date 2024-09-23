@@ -236,7 +236,7 @@ Given that class imbalance techniques (such as SMOTE) have already been applied,
 
 1. Our Random Forest model will provide great insight into drivers of 'High Satisfaction' and greater accuracy of classifying these satisfied individuals - important for understanding how common high satisfaction is, and 'ingredients of success'
 
-2. While Neural Networks are computationally expensive, it has really good potential to **better identify unsatisfied individuals** (minority class) and provide isnights into how we can target and drive up satisfaction for these employee groups. So it's certainly worth the time and effort to tune this further!
+2. While Neural Networks are computationally expensive, it has really good potential to **better identify unsatisfied individuals** (minority class) and provide insights into how we can target and drive up satisfaction for these employee groups. So it's certainly worth the time and effort to tune this further!
 
 
 # 4. Findings from Machine Learning Classification: Feature importance
