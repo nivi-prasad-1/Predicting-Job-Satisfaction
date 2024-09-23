@@ -203,14 +203,7 @@ For more detail, see our notebooks on preprocessing:
 
 ![class1](./visualisations/class1.png)
 
-### (e) Performance was less consistently good for identifying 'High Satisfaction' (Class 1)
-
-* #### Our Random Forest model still came out on top in this area - but it doesn’t do as well with spotting all unsatisfied respondents (Recall)
-
-* #### Whilst our neural network wasn’t the best overall, it has better recall: identifying unsatisfied individuals
-![class0](./visualisations/class0.png)
-
-### (f) There's room for improvement for both our Random Forest and Neural Network models...
+### (e) There's room for improvement for both our Random Forest and Neural Network models...
 
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
@@ -336,7 +329,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="width: 40%; text-align: center;">
-        <img src="./interactive_app/policy.png" alt="policymakers" style="width: 55%;">
+        <img src="./interactive_app/policy.png" alt="policymakers" style="width: 55%; display: block; margin: auto;">
     </div>
     <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
         <h3 style="font-size: 26px;">1. Value for Policymakers</h3>  <!-- Increased heading size -->
@@ -351,7 +344,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="width: 40%; text-align: center;">
-        <img src="./interactive_app/jobseeker.png" alt="jobseeker" style="width: 55%;">
+        <img src="./interactive_app/jobseeker.png" alt="jobseeker" style="width: 55%; display: block; margin: auto;">
     </div>
     <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
         <h3 style="font-size: 26px;">2. Value for Job Seekers</h3>  <!-- Increased heading size -->
