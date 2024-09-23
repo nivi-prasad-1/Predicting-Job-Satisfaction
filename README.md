@@ -194,11 +194,11 @@ For more detail, see our notebooks on preprocessing:
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 55%;">
+        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 35%;">
         <p>Confusion Matrix - Random Forest</p>
     </div>
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 55%;">
+        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 35%;">
         <p>Confusion Matrix - Neural Network</p>
     </div>
 </div>
@@ -212,19 +212,15 @@ For more detail, see our notebooks on preprocessing:
 So future iterations of the models need to work at addressing these misclassifications. Here are some recommendations:
 ### Overall recommendations for improving model performance
 
-Given that class imbalance techniques (such as SMOTE) have already been applied, our next steps should focus on **refining and optimising hyperparameters** using robust approaches like **RandomizedSearchCV** for broader exploration and **GridSearchCV** for fine-tuning. Below are specific recommendations for improving performance through better hyperparameter tuning approaches and alternative models:
+Given that class imbalance techniques (such as SMOTE) have already been applied, our next steps should focus on **refining and optimising hyperparameters** using robust approaches like **RandomizedSearchCV** for broader exploration and **GridSearchCV** for fine-tuning. Below are specific recommendations for improving performance through better hyperparameter tuning approaches:
 
-#### 1. Hyperparameter Tuning for Random Forest:
+#### 1. Hyperparameter Tuning for Random Forest and Neural Networks:
 
-- **RandomizedSearchCV**: This approach is ideal for exploring a wide range of hyperparameters without the computational intensity of an exhaustive search. We can use this to identify key hyperparameters such as tree depth, number of trees, and sample sizes that offer a good trade-off between model complexity and performance.
+- **RandomizedSearchCV**: This approach is ideal for exploring a wide range of hyperparameters without the computational intensity of an exhaustive search. We can use this to identify key hyperparameters such as tree depth, number of trees, and sample sizes that offer a good trade-off between model complexity and performance. Our next steps would be to perform this on our neural network model to finetune it.
   
 - **GridSearchCV**: After narrowing down promising ranges through RandomizedSearchCV, we can apply **GridSearchCV** to more precisely fine-tune specific hyperparameters. This approach works well once a range has been identified, allowing for an exhaustive search within smaller parameter spaces, ensuring optimal model performance.
 
-#### 2. Hyperparameter Tuning for Neural Network:
 
-- **RandomizedSearchCV**: Neural Networks involve multiple key hyperparameters (learning rate, dropout rate, batch size, etc.), and RandomizedSearchCV provides a more efficient way to explore these combinations broadly. This can help identify ranges of values that yield the best performance in terms of both precision and recall.
-  
-- **GridSearchCV**: Once we’ve identified potential ranges through RandomizedSearchCV, use **GridSearchCV** to more rigorously tune these parameters. This focused search will help achieve the best balance between model generalization and overfitting, especially when optimizing dropout, regularization, and learning rates.
 
 ### Why bother?
 
@@ -439,22 +435,4 @@ https://ncses.nsf.gov/explore-data/microdata/national-survey-college-graduates
     - Conda environment specification for this project
 * `README.md`
     - Project landing page (this page)
-
-* `LICENSE`
-    Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
-
-    Copyright (C) 2024 Nivedita Prasad
-
-    This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
-
-    You are free to:
-    - **Share** — copy and redistribute the material in any medium or format
-    - The licensor cannot revoke these freedoms as long as you follow the license terms.
-
-    Under the following terms:
-    - **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-    - **NonCommercial** — You may not use the material for commercial purposes.
-    - **NoDerivatives** — If you remix, transform, or build upon the material, you may not distribute the modified material.
-
-    No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
