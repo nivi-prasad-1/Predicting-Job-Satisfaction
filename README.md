@@ -172,12 +172,6 @@ For more detail, see our notebooks on preprocessing:
 #### Highlights included, satisfaction with career advancement as **key**, job tenure, relevance to the degree you studied (people want to use the skills they learnt!), salary, and even marital status.
 ![base_logit_predictors](./visualisations/base_pos_predictors.png)
 
-### (d)  In fact, this shed light on which features could increase or decrease your odds of being highly satisfied with your work...
-
-* #### Those who studied a professional degree or phd maybe less likely to be satisfied with their work, as could being surveyed during 2021. 
-* #### In contrast, ethnicity (white) could increase your odds of satisfaction in the workplace, as well as a range of select occupations and employment sectors...
-
-![base_oddspredictors](./visualisations/base_odds.png)
 
 # 3. Model construction and evaluation
 
@@ -267,20 +261,12 @@ This chart shows the **Top 10 Feature Importances** from the Random Forest model
 
 2. **Satisfaction with Intellectual Challenge during Job** also ranks highly in feature importance. This emphasises the importance of engaging, meaningful work—again, a key consideration in why people might report high satisfaction with their jobs.
 
-3. **Satisfaction with Salary** ranks third in importance. While salary is often viewed as a primary determinant of job satisfaction, it is noteworthy that **non-monetary factors** such as career advancement and intellectual challenge rank higher. This reinforces the idea that **intrinsic rewards** play a significant role in overall job satisfaction.
-
-4. **Satisfaction with Job Security** is next in line. This suggests that stability and long-term security are still critical factors in job satisfaction, especially in uncertain economic times.
-
-5. **Satisfaction with Job Location**, while less important than the aforementioned factors, still holds weight in determining job satisfaction, indicating that work-life balance and geographical considerations matter to employees.
-
-#### Less Important Features:
-- **Age**, **Salary (raw variable)**, and **Job Duration (Months)** have lower importance in this model. Although job tenure and salary are important for career longevity and income, they do not seem to influence satisfaction as heavily as subjective feelings about career progression, job security, or intellectual challenge.
-
-- The **survey year** is included in the top 10 but ranks lower, showing that while there may be year-over-year trends in satisfaction, it is not a dominant factor.
+As do a number of job satisfaction-related variables...
 
 #### How This Tallies with Previous Interpretations:
 
 - This ranking of feature importance supports the **story we've been telling** through our exploratory data analysis (EDA) and model evaluations: 
+
   - **Non-monetary factors** such as satisfaction with career growth, intellectual stimulation, and job security have a significant impact on overall job satisfaction.
   - While salary and job tenure matter, they play a **secondary role** compared to factors that relate to personal fulfillment and job stability.
   
@@ -288,17 +274,15 @@ This chart shows the **Top 10 Feature Importances** from the Random Forest model
 
 By focusing on these core drivers of satisfaction, we can provide actionable insights for both **jobseekers** and **policymakers**, reinforcing the value of aligning personal career goals with workplace opportunities for growth, stability, and intellectual engagement.
 
-### We also explored local interpretations using **LIME** (Local Interpretable Model-agnostic Explanations), a technique that helps explain what features contribute most to an individual’s probability of high job satisfaction.
+### We also explored local interpretations using **LIME** (Local Interpretable Model-agnostic Explanations), to explain what features contribute most to an individual’s probability of high job satisfaction.
 
-### What is LIME?
-
-The goal is to interpret individual predictions for job satisfaction using LIME (Local Interpretable Model-agnostic Explanations). LIME provides local explanations, meaning it explains how certain features of a particular instance influence that specific prediction (whether it’s predicting high or low satisfaction).
+Our goal was to interpret individual predictions for job satisfaction using LIME (Local Interpretable Model-agnostic Explanations). LIME provides local explanations, meaning it explains how certain features of a particular instance influence that specific prediction (whether it’s predicting high or low satisfaction).
 
 In this case, we're plotting the probability scores for four individual test instances. Each plot shows the model's predicted probability of 'High Satisfaction' vs. 'Low Satisfaction' for a single person or 'test instance', using 4 different rows of our X_test data. 
 
-## Putting this in practice
+## Putting this into practice
 
-Let's take one of the examples/test instances we ran, as a potential user who's interested in learning about what could be informing their job satisfaction.
+Let's take one of the examples/test instances we ran using LIME, as a potential user who's interested in learning about what could be informing their job satisfaction.
 
 In this case our random forest model and LIME seeks to explain one of the 'test instances' we see, to explain the probability score, and contributing factors:
 
@@ -362,19 +346,13 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 While we've demonstrated the value of the model using tools like **LIME** to explain individual predictions, there are several key steps ahead to further develop this work into a robust **proof of concept application**.
 
-## 1. In-depth Hyperparameter Tuning for the Neural Network
-The current model performance has provided valuable insights, but there is room for improvement, particularly with the **Neural Network** model. Future iterations will focus on:
-- **GridSearchCV** and **RandomizedSearchCV** for hyperparameter tuning.
-- Fine-tuning parameters such as **learning rate**, **batch size**, **regularization strength**, and **number of layers/neurons** to optimize the **classification accuracy**.
-- Experimenting with advanced techniques like **dropout** and **early stopping** to prevent overfitting and enhance generalization.
-
-## 2. Web Scraping Job Forums and Postings
+## 1. Web Scraping Job Forums and Postings
 To enrich the model’s understanding of **job satisfaction drivers**, web scraping techniques will be employed to gather data from:
 - **Job forums** where employees discuss their job experiences, challenges, and satisfaction levels.
 - **Job postings** to analyze trends in skill requirements, job roles, benefits, and perks that may influence job satisfaction.
 - This unstructured data will help **complement** the existing dataset and provide additional insights into emerging trends and employee expectations.
 
-## 3. Developing the Proof of Concept Application and Use Case
+## 2. Developing the Proof of Concept Application and Use Case
 
 The end goal is to explore the development of an application that enables:
 
@@ -395,23 +373,23 @@ By iterating on these next steps, this model can evolve into a valuable tool for
 This project was a rewarding experience, offering me the chance to work with rich data and apply a variety of machine learning techniques. Below are some reflections on the process:
 
 - **Key Challenges**:
-  1. Navigating and cleaning multiple years of survey data in different formats was time-consuming but essential to ensure consistency, and readable names of survey questions oftened coded as a string of numbers.
-  2. Addressing class imbalance (90% majority class) through techniques like **SMOTE** to improve prediction for underrepresented cases of 'Low Satisfaction.'
-  3. Selecting the most relevant features from over 200+ survey questions, and applying domain knowledge to filter down to job-related variables.
+  - Navigating and cleaning multiple years of survey data in different formats was time-consuming but essential to ensure consistency, and readable names of survey questions oftened coded as a string of numbers.
+  - Addressing class imbalance (90% majority class) through techniques like **SMOTE** to improve prediction for underrepresented cases of 'Low Satisfaction.'
+  - Selecting the most relevant features from over 200+ survey questions, and applying domain knowledge to filter down to job-related variables.
 
 - **What I Loved**:
-  1. Exploring different machine learning models (from Decision Tree to Neural Network) and tuning hyperparameters to enhance performance.
-  2. Visualising job satisfaction insights through tools like **Matplotlib** and **LIME**, and seeing how individual features contribute to predictions.
-  3. Creating the **proof of concept** for a predictive tool that can provide real value to jobseekers and policymakers.
+  - Exploring different machine learning models (from Decision Tree to Neural Network) and tuning hyperparameters to enhance performance.
+  - Visualising job satisfaction insights through tools like **Matplotlib** and **LIME**, and seeing how individual features contribute to predictions.
+  - Creating the **proof of concept** for a predictive tool that can provide real value to jobseekers and policymakers.
 
 - **Technical Skills Showcased**:
-  1. Advanced **data preprocessing** and **feature engineering**, including constructing meaningful variables like **job duration**, using loops and functions to make mergin data more efficient
-  2. Mastery of **Logistic Regression**, **Random Forests**, and exploration of **Neural Networks** with detailed hyperparameter tuning.
-  3. Applying **explainable AI** techniques with **LIME** to interpret model predictions and generate actionable insights.
+  - Advanced **data preprocessing** and **feature engineering**, including constructing meaningful variables like **job duration**, using loops and functions to make mergin data more efficient
+  - Mastery of **Logistic Regression**, **Random Forests**, and exploration of **Neural Networks** with detailed hyperparameter tuning.
+  - Applying **explainable AI** techniques with **LIME** to interpret model predictions and generate actionable insights.
 
 - **Excitement for Policymakers**:
-  1. I'm excited about the potential of this tool to help policymakers explore the **drivers of job satisfaction** across various demographics and industries.
-  2. With real-time data and future enhancements, this model could serve as a valuable resource for creating **targeted labor market interventions** and improving job conditions.
+  - I'm excited about the potential of this tool to help policymakers explore the **drivers of job satisfaction** across various demographics and industries.
+  - With real-time data and future enhancements, this model could serve as a valuable resource for creating **targeted labor market interventions** and improving job conditions.
 
 This project has been a fantastic opportunity to combine technical skills with impactful real-world applications, and I look forward to further developing it!
 
