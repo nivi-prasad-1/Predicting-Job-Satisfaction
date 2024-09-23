@@ -215,11 +215,11 @@ For more detail, see our notebooks on preprocessing:
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 85%;">
+        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 55%;">
         <p>Confusion Matrix - Random Forest</p>
     </div>
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 85%;">
+        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 55%;">
         <p>Confusion Matrix - Neural Network</p>
     </div>
 </div>
@@ -347,6 +347,23 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
         </ul>
     </div>
 </div>
+
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="width: 40%; text-align: center;">
+        <img src="./interactive_app/jobseeker.png" alt="jobseeker" style="width: 55%;">
+    </div>
+    <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
+        <h3 style="font-size: 26px;">2. Value for Job Seekers</h3>  <!-- Increased heading size -->
+        <ul>
+            <li><strong>Understand the key drivers of job satisfaction</strong> - the app helps job seekers identify which factors, such as salary, work-life balance, career advancement, or job security, play the most significant role in overall job satisfaction.</li>
+            <li><strong>Personalize your job search</strong> - by honing in on the aspects of a job that matter most to you, the app provides tailored job recommendations that align with your priorities for satisfaction, helping you make more informed decisions.</li>
+            <li><strong>Track evolving job satisfaction trends</strong> - as the job market evolves, the app can help you stay updated on which industries or roles offer higher satisfaction, allowing you to adjust your career goals accordingly.</li>
+        </ul>
+    </div>
+</div>
+
+
 
 # 6. Next Steps
 
