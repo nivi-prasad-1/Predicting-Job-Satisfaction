@@ -68,7 +68,7 @@ feature_name_mapping_top_10 = {
 
 # Home Page Function
 def home_page():
-    st.title("Who's likely to love their job? A Predictive Tool for Job Satisfaction and Key Drivers")
+    st.title("Who's likely to love their job? A Predictive Tool for Job Satisfaction, and Key Drivers")
 
     st.markdown("""
     ### Welcome!

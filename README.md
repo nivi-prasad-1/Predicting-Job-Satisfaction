@@ -216,23 +216,26 @@ For more detail, see our notebooks on preprocessing:
 So future iterations of the models need to work at addressing these misclassifications. Here are some recommendations:
 ### Overall recommendations for improving model performance
 
-Given that class imbalance techniques (such as SMOTE) have already been applied, our next steps should focus on **refining and optimising hyperparameters** using robust approaches like **RandomizedSearchCV** for broader exploration and **GridSearchCV** for fine-tuning. Below are specific recommendations for improving performance through better hyperparameter tuning approaches:
+Given that class imbalance techniques (such as SMOTE) have already been applied, our next steps should focus on **refining and optimising hyperparameters** using robust approaches like **RandomizedSearchCV** for broader exploration and **GridSearchCV** for fine-tuning. 
 
-#### 1. Hyperparameter Tuning for Random Forest and Neural Networks:
+Below are specific recommendations for improving performance through better hyperparameter tuning approaches:
 
-- **RandomizedSearchCV**: This approach is ideal for exploring a wide range of hyperparameters without the computational intensity of an exhaustive search. We can use this to identify key hyperparameters such as tree depth, number of trees, and sample sizes that offer a good trade-off between model complexity and performance. Our next steps would be to perform this on our neural network model to finetune it.
-  
-- **GridSearchCV**: After narrowing down promising ranges through RandomizedSearchCV, we can apply **GridSearchCV** to more precisely fine-tune specific hyperparameters. This approach works well once a range has been identified, allowing for an exhaustive search within smaller parameter spaces, ensuring optimal model performance.
+#### Next steps for improving model performance:
 
-#### 2. Consider Alternative Models:
+Due to computational constraints, moving forward we want to consider more in-depth RandomizedSearchCV and GridSearchCV to tune our models further:
 
-- **Gradient Boosting (e.g., XGBoost, LightGBM)**: These models are well-suited for handling imbalanced datasets and often outperform Random Forests in many cases. We might start with **RandomizedSearchCV** to explore a broad range of hyperparameters (e.g., boosting rounds, learning rates, tree depth) and then fine-tune with **GridSearchCV** once the optimal ranges have been identified.
+1. **Random Forest**: Implement **RandomizedSearchCV** to explore a wide parameter space, then refine with **GridSearchCV** for optimal performance. Focus on tuning key parameters such as tree depth, number of estimators, and minimum samples per split.
+   
+2. **Neural Network**: Use **RandomizedSearchCV** to explore combinations of learning rates, dropout rates, batch sizes, and regularisation strengths. After identifying promising ranges, apply **GridSearchCV** for more precise optimization. Use **early stopping** to prevent overfitting and dynamically adjust the number of training epochs.
 
-- **Threshold Tuning**: Consider adjusting the decision threshold for classification. Instead of using the default threshold (e.g., 0.5), use **precision-recall curves** to find an optimal threshold that minimizes false positives for 'Low Satisfaction' while maintaining high recall for 'High Satisfaction.'
+3. **Gradient Boosting Models**: Consider introducing models like **XGBoost** or **LightGBM**, which handle imbalanced data well and can potentially outperform Random Forests. Begin with **RandomizedSearchCV** for broad hyperparameter exploration, followed by **GridSearchCV** for fine-tuning.
+
+4. **Threshold Tuning**: Use precision-recall curves to identify and adjust the decision threshold for predicting 'Low Satisfaction' to optimize precision without sacrificing too much recall.
+
+By applying these robust hyperparameter tuning strategies and leveraging **RandomizedSearchCV** and **GridSearchCV** appropriately, model performance can be enhanced, particularly in balancing precision and recall for both the majority and minority classes. However, this will be dependent on our computational resources - ideally GridSearchCV would be the most robust way forward, but requires signifciant time and computing power.
 
 
-
-### Why bother?
+### What's the benefit of taking hyperparameter tuning further?
 
 1. Our Random Forest model will provide great insight into drivers of 'High Satisfaction' and greater accuracy of classifying these satisfied individuals - important for understanding how common high satisfaction is, and 'ingredients of success'
 
