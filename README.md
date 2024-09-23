@@ -113,7 +113,7 @@ Thus, the decision to code the target variable as a binary classification of **'
 
 ![Job Satisfaction Scores](./visualisations/satscores.png)
 
-#### Interesting! So we wanted to better explore **how much do these other components of job satisfaction contribute to ooverall job satisfaction?'**
+#### Interesting! So we decided to explore: **how much do these other components of job satisfaction contribute to overall job satisfaction?**
 
 ### (c)  After coding our 'overall satisfaction' score as binary, we had to address the resulting class imbalance using oversampling...
 
