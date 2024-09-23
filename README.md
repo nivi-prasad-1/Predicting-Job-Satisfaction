@@ -35,6 +35,24 @@
 
 8. [Note on repository](#8-note-on-repository)
 
+
+---
+### If you want to get into the nitty gritty of this project, here are key notebooks:
+
+- 00 [Data dictionary and mappings](./notebooks/00%20Data%20dictionary%20and%20mappings.ipynb)
+- 01 [Introduction to Data](./notebooks/01%20Introduction%20to%20Data%20and%20Preliminary%20EDA.ipynb)
+- 02 [Merging Survey Data](./notebooks//02%20Merging%20survey%20data,%20and%20initial%20preprocessing.ipynb)
+- 03 [Further EDA and Preprocessing](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
+- 04 [Baseline Model 1 logistic regression](./notebooks/04%20Baseline%20Model%201:%20development%20roadmap%20&%20baseline%20logit%20model.ipynb)
+- 05 [Preparing for Advanced Modeling](./notebooks/05%20Prep%20for%20advanced%20modelling%20and%20exploring%20PCA.ipynb)
+- 06 [Model 2 - Decision Tree](./notebooks/06%20Model%202%20-%20Decision%20Tree.ipynb)
+- 07 [Model 3 - Random Forest](./notebooks/07%20Model%203%20-%20Random%20Forest.ipynb)
+- 08 [Model 4 - Neural Network](./notebooks/08%20Model%204%20-%20Neural%20Network.ipynb)
+- 09 [Evaluation](./notebooks/09%20Evaluation.ipynb)
+- 10 [Summary of findings and next steps](./notebooks/10%20Summary%20of%20findings%20and%20next%20steps.ipynb)
+
+If not then please read ahead...
+
 ---
 
 # Problem Space 
@@ -44,17 +62,6 @@ Finding a job we ‘love’ is hard and critical in today’s labor market to su
 This project seeks to:
 - Predict job satisfaction based on various attributes like career advancement, salary, and job duration.
 - Understand the drivers of job satisfaction through feature importance and model interpretations.
-
----
-### If you want to get into the nitty gritty of this project, here are key notebooks:
-
-- 00 [Data dictionary and mappings](./notebooks/00%20Data%20dictionary%20and%20mappings.ipynb)
-- 01 [Introduction to Data](./notebooks/01%20Introduction%20to%20Data.ipynb)
-- 02 [Merging Survey Data](./notebooks/02%20Merging%20survey%20data.ipynb)
-- 03 [Further EDA and Preprocessing](./notebooks/03%20Further%20EDA%20and%20preprocessing.ipynb)
-- 05 [Preparing for Advanced Modeling](./notebooks/05%20Preparing%20for%20advanced%20modelling.ipynb)
-- 09 [Evaluation](./notebooks/09%20Evaluation.ipynb)
-- 10 [Evaluation](./notebooks/10%20Summary%20of%20findings%20and%20next%20steps.ipynb)
 
 ---
 
