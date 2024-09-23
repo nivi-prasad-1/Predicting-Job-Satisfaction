@@ -1,4 +1,4 @@
-# References and Resources
+# References
 
 ## Research Papers on Job Satisfaction
 1. [**Measures of Job Satisfaction**](https://www.oecd-ilibrary.org/measures-of-job-satisfaction_5lgsjhvj7sf3.pdf) - OECD
