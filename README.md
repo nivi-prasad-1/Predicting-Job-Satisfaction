@@ -194,11 +194,11 @@ For more detail, see our notebooks on preprocessing:
 #### Our models are still getting 'confused' when it comes to classifying individuals with 'Low Satisfaction', given the original class imbalance in our dataset...
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 35%;">
+        <img src="./visualisations/confusion_rf.png" alt="Confusion Matrix RF" style="width: 85%;">
         <p>Confusion Matrix - Random Forest</p>
     </div>
     <div style="text-align: center;">
-        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 35%;">
+        <img src="./visualisations/confusion_nn.png" alt="Confusion Matrix NN" style="width: 85%;">
         <p>Confusion Matrix - Neural Network</p>
     </div>
 </div>
