@@ -93,7 +93,7 @@ The process of cleaning the data involved multiple steps to ensure consistency a
 
 #### Preprocessing Techniques:
 
-### (a) Our original distribution of overall satisfaction scores indicated potential for binary classification - respondents generally liked their jobs
+### (a) Respondents generally liked their jobs...with the distribution of scores indicating opportunity for binary classification
 
 ![Overall satisfaction](./visualisations/overall_satscore.png)
 
@@ -109,26 +109,30 @@ Thus, the decision to code the target variable as a binary classification of **'
 
 ### (b) Components of 'overall job satisfaction' showed a similar distribution - suggesting focusing on 'overall' satisfaction is more suited as our target
 
+#### For example, `satisfaction with salary`, `career advancement` and `benefits` scores followed a very similar pattern to `overall satisfaction`...
+
 ![Job Satisfaction Scores](./visualisations/satscores.png)
 
-#### Instead, this suggested that a more interesting area of exploration would be **how much are these other components of job satisfaction contributing to our overall job sa**tisfaction?'**
+#### Interesting! So we wanted to better explore **how much do these other components of job satisfaction contribute to ooverall job satisfaction?'**
 
-### (c)  However, we had to address the resulting class imbalance in our 'overall job satisfaction' target variable, using SMOTE
+### (c)  After coding our 'overall satisfaction' score as binary, we had to address the resulting class imbalance using oversampling...
+
+#### Class imbalance before and after applying SMOTE:
 
 <div style="display: flex; justify-content: space-between;">
     <div style="text-align: center;">
-        <img src="./visualisations/target_before_SMOTE.png" alt="Before SMOTE" style="width: 65%;">
+        <img src="./visualisations/target_before_SMOTE.png" alt="Before SMOTE" style="width: 60%;">
         <p>Target Distribution Before SMOTE</p>
     </div>
     <div style="text-align: center;">
-        <img src="./visualisations/target_after_SMOTE.png" alt="After SMOTE" style="width: 65%;">
+        <img src="./visualisations/target_after_SMOTE.png" alt="After SMOTE" style="width: 60%;">
         <p>Target Distribution After SMOTE</p>
     </div>
 </div>
 
 #### As we can see above, we address the original 90% positive/'High Satisfaction' class imbalance by applying SMOTE.
 
-This was one of many steps taken to get our data ready for modelling. The table below summarises key techniques applied:
+#### This was one of many steps taken to get our data ready for modelling. The table below summarises key techniques applied:
 
 | **Preprocessing Technique**                        | **Rationale/Impact on Model Performance**                                    |
 |----------------------------------------------------|-----------------------------------------------------------------------------|
