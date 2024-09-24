@@ -361,15 +361,17 @@ The end goal is to explore the development of an application that enables:
 - **Jobseekers** to input their profile details and receive predictions about their likelihood of job satisfaction, as well as the factors contributing to that prediction.
 - **Policymakers** to explore trends in job satisfaction across industries, demographics, and geographies, allowing for targeted interventions.
 
-**Key features of the proof of concept application**:
+See our proof-of-concept Streamlit app preview here:
 
-- **User-friendly interface** that visualises predictions and provides explanations using LIME.
+[Preview of job satisfaction prediction app](https://drive.google.com/file/d/1m2goD1MmP3QlEUonwo0sj-ikCmOBctZ4/view?usp=sharing)
+
+
+*Watch this space as we iterate this further to include the following features...*
+
 - **Customisable inputs** for jobseekers to adjust variables such as salary expectations, job location, and role-specific factors.
 - **Real-time data** updates from job postings to keep the model relevant in a changing labor market.
 
 By iterating on these next steps, this model can evolve into a valuable tool for both **jobseekers** and **policymakers**, offering actionable insights into job satisfaction and its key drivers.
-
-*Watch this space for a demo of our proof-of-concept Streamlit app...*
 
 # 7. Final Comments and Reflections
 
