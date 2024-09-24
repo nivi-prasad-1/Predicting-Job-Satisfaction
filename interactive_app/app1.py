@@ -124,7 +124,7 @@ def home_page():
     # call to action
     st.markdown("""
     ### Ready to Explore?
-    Head to the **Profile Predictions** page to explore different employee profiles from our test data. 
+    Head to the **Employee Profiles Explorer** page to explore different employee profiles from our test data. 
     - Use our Random Forest model to understand the likelihood of job satisfaction based on key job attributes like salary, career advancement, and job security.
     - Although the profiles are based on real data, they provide a general prediction for common employee profiles, rather than personalised predictions for individual users.
     """)
@@ -654,9 +654,9 @@ def prediction_page():
 # Navigation Bar
 def main():
     st.sidebar.title("Explore insights")
-    page = st.sidebar.radio("Choose a page", ["Welcome", "Key Predictors from Logit Model", "Feature Importance using Random Forest", "Employee Profiles Explorer"])
+    page = st.sidebar.radio("Choose a page", ["Home", "Key Predictors from Logit Model", "Feature Importance using Random Forest", "Employee Profiles Explorer"])
 
-    if page == "Welcome":
+    if page == "Home":
         home_page()
     elif page == "Key Predictors from Logit Model":
         logit_odds_ratios()
