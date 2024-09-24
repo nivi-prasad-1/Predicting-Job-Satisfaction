@@ -12,8 +12,6 @@ asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_16983411
 astunparse==1.6.3
 attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1722977137225/work
 blinker @ file:///home/conda/feedstock_root/build_artifacts/blinker_1715091184126/work
-boto3 @ file:///home/conda/feedstock_root/build_artifacts/boto3_1724864165644/work
-botocore @ file:///home/conda/feedstock_root/build_artifacts/botocore_1724827595801/work
 branca @ file:///home/conda/feedstock_root/build_artifacts/branca_1714071803448/work
 Brotli @ file:///Users/runner/miniforge3/conda-bld/brotli-split_1695989934239/work
 cachetools==5.5.0
