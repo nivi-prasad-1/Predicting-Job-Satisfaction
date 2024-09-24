@@ -71,15 +71,6 @@ feature_name_mapping_top_10 = {
 def home_page():
     st.title("Who's likely to love their job? A Predictive Tool for Job Satisfaction and Key Drivers")
 
-    # Display images at the top for a more engaging look
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.image("jobsat.png", use_column_width=True)
-    
-    with col2:
-        st.image("jobsat2.png", use_column_width=True)
-
     st.markdown("""
     ### Welcome!
 
@@ -91,9 +82,9 @@ def home_page():
     - **Gain Valuable Insights**: Dive into job attributes like salary, career advancement, job security, and more to understand their impact on satisfaction levels.
 
     #### How to Navigate:
-    - **Logit Predictors**: Explore the top predictors of job satisfaction using logistic regression.
-    - **Random Forest MDI**: Discover the key factors impacting satisfaction using the Mean Decrease in Impurity (MDI) technique.
-    - **Profile Predictions**: Select a specific employee profile and see personalized predictions, with detailed explanations provided by LIME.
+    - **Key Predictors from Logit Model**: Explore the top predictors of job satisfaction using logistic regression.
+    - **Feature Importance using Random Forest**: Discover the key factors impacting satisfaction using the Mean Decrease in Impurity (MDI) technique.
+    - **Employee Profiles Explorer**: Select a specific employee profile and see job satisfaction predictions, with detailed explanations provided by LIME.
     """)
 
     # Create sections for Jobseekers and Policymakers
@@ -102,12 +93,12 @@ def home_page():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image("./interactive_app/jobseekers.png", use_column_width=True)
+        st.image("./interactive_app/jobseekers.png", width=280)
         # Value for Jobseekers
         st.markdown("""
         ### Value for Jobseekers
 
-        Curious about what drives job satisfaction for employees with profiles similar to yours? On the **Predictive Tool - Employee Profiles Explorer** page, you can explore different employee profiles from our test data and see what factors most impact their job satisfaction.
+        Curious about what drives job satisfaction for employees with profiles similar to yours? On the **Employee Profiles Explorer** page, you can explore different employee profiles from our test data and see what factors most impact their job satisfaction.
 
         - Use the insights from employees matching certain profiles to **learn which job attributes drive satisfaction**, such as career advancement, salary, job security, and more.
         - By understanding the profiles that align with your own experiences, you can tweak your career path or negotiate for factors that matter most to you.
@@ -116,7 +107,7 @@ def home_page():
         """)
     
     with col2:
-        st.image("./interactive_app/policymakers.png", use_column_width=True)
+        st.image("./interactive_app/policymakers.png", width=300)
         # Value for Policymakers
         st.markdown("""
         ### Value for Policymakers
@@ -124,7 +115,7 @@ def home_page():
         For policymakers aiming to improve workforce satisfaction and retention, this tool offers valuable insights based on key job attributes.
 
         - On the **Key Predictors using Logistic Regression** and **Feature Importance using Random Forest** pages, you can explore the **key drivers** of job satisfaction, such as salary, job security, and career advancement. These insights allow for **evidence-based policy formulation** that can address areas needing improvement across sectors.
-        - The **Predictive Tool - Employee Profiles Explorer** page helps illustrate how employees with different profiles respond to these key factors, offering an opportunity to understand broader trends in workforce satisfaction.
+        - The **Employee Profiles Explorer** page helps illustrate how employees with different profiles respond to these key factors, offering an opportunity to understand broader trends in workforce satisfaction.
         - Policymakers can use this tool to **identify areas of focus** for workforce wellbeing initiatives, leading to more **targeted policies** that promote job satisfaction and productivity.
 
         Whether you are focused on shaping national employment policies or specific sector-based reforms, this tool provides the **data-backed insights** necessary to support impactful, long-lasting improvements.
@@ -386,7 +377,7 @@ def prediction_page():
     st.markdown("""
     ### How to Use:
     1. Select an **Employee Profile** to explore different satisfaction levels.
-    2. Select a specific **Test Instance** to explore how the model predicts their job satisfaction.
+    2. Generate a random **Test Instance** to explore how the model predicts their job satisfaction.
     3. Generate explanations using **local interpretable model-agnostic explanations (LIME)**.
     """)
 
@@ -648,7 +639,7 @@ def prediction_page():
     **How the LIME Explanation Works**:
     
     1. **Test Instance**: Using the random test instance generator, random employee is selected from the test data that matches the chosen profile 
-    2. **This test instance passes through the model and outputs predicted probabilities of 'Low Satisfaction' and 'High Satisfaction'
+    2. This test instance passes through the model and outputs **predicted probabilities of 'Low Satisfaction' and 'High Satisfaction'**
     2. **Synthetic Data Generation**: LIME generates synthetic data points around this employee by slightly tweaking the features (like salary or job security).
     3. **Model Predictions**: The model predicts job satisfaction for these synthetic employees.
     4. **Weighting**: LIME gives higher importance to data points that are closer to the original employee/row of data
@@ -663,15 +654,15 @@ def prediction_page():
 # Navigation Bar
 def main():
     st.sidebar.title("Explore insights")
-    page = st.sidebar.radio("Choose a page", ["Welcome", "Key Predictors using Logistic Regression", "Feature Importance usng Random Forest", "Predictive Tool - Employee Profiles Explorer"])
+    page = st.sidebar.radio("Choose a page", ["Welcome", "Key Predictors from Logit Model", "Feature Importance using Random Forest", "Employee Profiles Explorer"])
 
     if page == "Welcome":
         home_page()
-    elif page == "Key Predictors using Logistic Regression":
+    elif page == "Key Predictors from Logit Model":
         logit_odds_ratios()
-    elif page == "Feature Importance usng Random Forest":
+    elif page == "Feature Importance using Random Forest":
         random_forest_mdi()
-    elif page == "Predictive Tool - Employee Profiles Explorer":
+    elif page == "Employee Profiles Explorer":
         prediction_page()
 
 # Call the main function to run the app
