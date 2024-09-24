@@ -1,5 +1,4 @@
 absl-py==2.1.0
-aiobotocore @ file:///home/conda/feedstock_root/build_artifacts/aiobotocore_1725100354566/work
 aiohappyeyeballs @ file:///home/conda/feedstock_root/build_artifacts/aiohappyeyeballs_1724167852130/work
 aiohttp @ file:///Users/runner/miniforge3/conda-bld/aiohttp_1724171245323/work
 aioitertools @ file:///home/conda/feedstock_root/build_artifacts/aioitertools_1663521246073/work
