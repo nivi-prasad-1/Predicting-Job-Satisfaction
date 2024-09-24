@@ -1,7 +1,7 @@
 <!-- Images above the title -->
 <div style="text-align: center;">
-    <img src="./interactive_app/image1.png" alt="Image 1" style="width: 200px; height:150px; margin-right: 20px;"/>
-    <img src="./interactive_app/image2.png" alt="Image 2" style="width: 200px; height:150px;"/>
+    <img src="./interactive_app/jobsat.png" alt="Image 1" style="width: 200px; height:150px; margin-right: 20px;"/>
+    <img src="./interactive_app/jobsat2.png" alt="Image 2" style="width: 200px; height:150px;"/>
 </div>
 
 <!-- Centered title with styling -->
