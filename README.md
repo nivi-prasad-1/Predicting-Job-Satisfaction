@@ -361,7 +361,7 @@ The end goal is to explore the development of an application that enables:
 - **Jobseekers** to input their profile details and receive predictions about their likelihood of job satisfaction, as well as the factors contributing to that prediction.
 - **Policymakers** to explore trends in job satisfaction across industries, demographics, and geographies, allowing for targeted interventions.
 
-*Here's a sneak peak (click thumbnail below to watch a demo)*:
+*Here's a sneak peak (click the thumbnail below to watch a demo)*:
 
 [![Preview our proof-of-concept tool built using Streamlit](https://drive.google.com/uc?export=view&id=1oXJi_B3v9dg6a4DNKRMZoKPQv6DIXRYr)](https://drive.google.com/file/d/1m2goD1MmP3QlEUonwo0sj-ikCmOBctZ4/view?usp=sharing)
 
