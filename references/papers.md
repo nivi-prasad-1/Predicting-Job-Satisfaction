@@ -17,6 +17,10 @@
 2. [**Decrypting Your Machine Learning Model Using LIME**](https://towardsdatascience.com/decrypting-your-machine-learning-model-using-lime-5adc035109b5) - Towards Data Science
    - A guide on using LIME to explain machine learning model predictions, with examples in Python.
 
+3. [**Steps for building a LIME model**](https://medium.com/@ginoasuncion/understanding-machine-learning-predictions-with-lime-7892998c7484) - Medium
+   - Good explanation of how local predictions work using LIME
+
+
 3. [**Scikit-Learn Decision Tree Documentation**](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html) - Scikit-Learn
    - Official documentation for the `DecisionTreeClassifier` in Scikit-learn, including usage examples.
 

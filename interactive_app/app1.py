@@ -68,25 +68,78 @@ feature_name_mapping_top_10 = {
     'num__job_duration_months': 'Job Duration (Months)'
 }
 
-# Home Page Function
 def home_page():
-    st.title("Who's likely to love their job? A Predictive Tool for Job Satisfaction, and Key Drivers")
+    st.title("Who's likely to love their job? A Predictive Tool for Job Satisfaction and Key Drivers")
+
+    # Display images at the top for a more engaging look
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.image("jobsat.png", use_column_width=True)
+    
+    with col2:
+        st.image("jobsat2.png", use_column_width=True)
 
     st.markdown("""
     ### Welcome!
 
-    This tool is designed to help you understand the factors that drive job satisfaction based on various job-related attributes. 
+    This tool is designed to help jobseekers, employers, and policymakers understand the factors that drive job satisfaction based on various job-related attributes.
 
-    #### Objectives:
-    - Predict job satisfaction using machine learning models.
-    - Explore key drivers of job satisfaction through logistic regression and random forest models.
-    - Gain insights into how different job attributes contribute to job satisfaction.
+    #### Key Objectives:
+    - **Predict Job Satisfaction**: Use machine learning models to predict an individual's likelihood of job satisfaction.
+    - **Understand Key Drivers**: Explore the top factors contributing to job satisfaction through logistic regression and random forest models.
+    - **Gain Valuable Insights**: Dive into job attributes like salary, career advancement, job security, and more to understand their impact on satisfaction levels.
 
-    #### Navigation:
+    #### How to Navigate:
     - **Logit Predictors**: Explore the top predictors of job satisfaction using logistic regression.
-    - **Random Forest MDI**: Discover feature importance using the Mean Decrease in Impurity (MDI) technique.
-    - **Profile Predictions**: Select a specific employee profile and see personalized predictions, including LIME-based explanations.
+    - **Random Forest MDI**: Discover the key factors impacting satisfaction using the Mean Decrease in Impurity (MDI) technique.
+    - **Profile Predictions**: Select a specific employee profile and see personalized predictions, with detailed explanations provided by LIME.
     """)
+
+    # Create sections for Jobseekers and Policymakers
+    st.markdown("## Value for Different Audiences")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.image("./interactive_app/jobseekers.png", use_column_width=True)
+        # Value for Jobseekers
+        st.markdown("""
+        ### Value for Jobseekers
+
+        Curious about what drives job satisfaction for employees with profiles similar to yours? On the **Predictive Tool - Employee Profiles Explorer** page, you can explore different employee profiles from our test data and see what factors most impact their job satisfaction.
+
+        - Use the insights from employees matching certain profiles to **learn which job attributes drive satisfaction**, such as career advancement, salary, job security, and more.
+        - By understanding the profiles that align with your own experiences, you can tweak your career path or negotiate for factors that matter most to you.
+        
+        Although the predictions aren't fully personalised, you can explore and learn from **real-world data** on what impacts satisfaction for employees like you.
+        """)
+    
+    with col2:
+        st.image("./interactive_app/policymakers.png", use_column_width=True)
+        # Value for Policymakers
+        st.markdown("""
+        ### Value for Policymakers
+
+        For policymakers aiming to improve workforce satisfaction and retention, this tool offers valuable insights based on key job attributes.
+
+        - On the **Key Predictors using Logistic Regression** and **Feature Importance using Random Forest** pages, you can explore the **key drivers** of job satisfaction, such as salary, job security, and career advancement. These insights allow for **evidence-based policy formulation** that can address areas needing improvement across sectors.
+        - The **Predictive Tool - Employee Profiles Explorer** page helps illustrate how employees with different profiles respond to these key factors, offering an opportunity to understand broader trends in workforce satisfaction.
+        - Policymakers can use this tool to **identify areas of focus** for workforce wellbeing initiatives, leading to more **targeted policies** that promote job satisfaction and productivity.
+
+        Whether you are focused on shaping national employment policies or specific sector-based reforms, this tool provides the **data-backed insights** necessary to support impactful, long-lasting improvements.
+        """)
+
+    # call to action
+    st.markdown("""
+    ### Ready to Explore?
+    Head to the **Profile Predictions** page to explore different employee profiles from our test data. 
+    - Use our Random Forest model to understand the likelihood of job satisfaction based on key job attributes like salary, career advancement, and job security.
+    - Although the profiles are based on real data, they provide a general prediction for common employee profiles, rather than personalised predictions for individual users.
+    """)
+
+
+
 ### Logistic Regression Odds Ratios (First Section)
 # def logit_odds_ratios():
 #     st.subheader("Top Predictors of High Job Satisfaction (Logit Regression)")
@@ -180,6 +233,14 @@ def logit_odds_ratios():
     # Display the plot in Streamlit
     st.plotly_chart(fig_logit)
 
+    # Methodological note at the bottom of the odds ratio section
+    st.markdown("""
+    **Methodological Note:**
+    - The results displayed above are based on a **logistic regression** model fitted using **Statsmodels**.
+    - Odds ratios represent the likelihood of high job satisfaction associated with each feature, holding other factors constant. 
+    - For example, an odds ratio greater than 1 indicates that a one standard deviation increase in that feature increases the likelihood of high job satisfaction. Conversely, an odds ratio less than 1 suggests a decrease in that likelihood.
+    - Only features with statistically significant effects (p-values < 0.05) are included in the plot. These features are the strongest predictors of job satisfaction in our model.
+    """)
 
 ### Random Forest MDI Section
 # def random_forest_mdi():
@@ -271,7 +332,14 @@ def random_forest_mdi():
     # Display the plot in Streamlit
     st.plotly_chart(fig_mdi)
 
-
+    # Methodological note at the bottom of the feature importance section
+    st.markdown("""
+    **Methodological Note:**
+    - This Random Forest model is trained with **400 decision trees**, and hyperparameter optimisation was performed to improve the model’s accuracy and generalisability.
+    - The bars above represent the **Mean Decrease in Impurity (MDI)**, which is a measure of how much each feature contributes to reducing uncertainty in the predictions. 
+    - A higher MDI value means the feature plays a more important role in the model's decision-making process.
+    - Random Forest is an ensemble learning method that builds multiple decision trees and averages their predictions to improve accuracy and reduce overfitting.
+    """)
 
 # Helper function to get profile indices based on relaxed filtering logic
 def get_profile_indices(profile, percentiles):
@@ -354,11 +422,21 @@ def prediction_page():
     # Convert the dictionary into a DataFrame for display
     profile_df = pd.DataFrame.from_dict(profile_explanations, orient='index')
 
+    st.markdown("""
+    #### Employee Profiles Explained:
+    Below is a breakdown of each profile type. These profiles reflect different types of employees based on their satisfaction levels in various areas of their job.
+    """)
+
     # Display the DataFrame as a table
     st.table(profile_df)
 
+    st.markdown("""
+    Now, select a profile to see how the model predicts job satisfaction for a random employee in this category.
+    """)
+
     # Profile selection options
     profile_options = ['Career Climber', 'Security Seeker', 'Balanced Performer', 'High Performer', 'Undervalued High Achiever']
+
     selected_profile = st.selectbox("Choose a profile:", profile_options)
 
 
@@ -375,8 +453,8 @@ def prediction_page():
     # Get indices for the selected profile
     indices = get_profile_indices(selected_profile, percentiles)
 
-    # Debugging: Print indices to check if any instances match the selected profile
-    st.write(f"Found {len(indices)} instances for profile: {selected_profile}")
+    # # Debugging: Print indices to check if any instances match the selected profile
+    # st.write(f"Found {len(indices)} instances for profile: {selected_profile}")
 
     # Handle case when no matching instances are found
     if len(indices) == 0:
@@ -390,6 +468,11 @@ def prediction_page():
     else:
         st.warning("Please click the button to select a test instance.")
         return
+    
+    st.markdown("""
+    #### What is a "Test Instance"?
+    A test instance represents a randomly selected employee from our test data that matches the chosen profile. Based on their attributes (like salary, satisfaction with job security), the model will predict their job satisfaction.
+    """)
 
     # Prepare test instance from scaled data (ensure it's in correct format)
     test_instance = X_test_scaled_df.loc[selected_instance].values
@@ -417,6 +500,11 @@ def prediction_page():
 
     # Get predicted probabilities for the current test instance
     probs = rf_model.predict_proba([test_instance])[0]
+
+    st.markdown("""
+    #### Predicted Probability of Job Satisfaction:
+    The bar chart below shows the predicted probability that the randomly selected employee falls into either the "High Satisfaction" or "Low Satisfaction" category based on the model's predictions.
+    """)
 
     # # Create a mini bar plot to visualize the predicted probabilities
     # st.write("Predicted Probability of Job Satisfaction")
@@ -489,6 +577,13 @@ def prediction_page():
 
     import plotly.graph_objects as go
 
+    st.markdown("""
+    #### LIME Explanation:
+    LIME helps explain **why** the model made the prediction above by analysing the factors that contributed the most to the employee's job satisfaction prediction.
+    
+    Here are the factors and their respective contributions (positive or negative) to the predicted satisfaction level.
+    """)
+
     # Extract LIME explanation as a dictionary or list of tuples
     lime_explanation = explanation.as_list()  # Extracts [(feature, importance), ...]
 
@@ -537,22 +632,46 @@ def prediction_page():
     # Display the plot in Streamlit
     st.plotly_chart(fig_lime)
 
+    st.markdown("""
+    In the LIME chart above, the green bars represent the kind of factors that could **positively** impact job satisfaction, while the blue bars represent factors that **negatively** impact it. 
+    These factors help you understand the model’s reasoning behind the prediction.
+    """)
 
+        # Add Methodological Note:
+    st.markdown("""
+    ### Methodological Note:
+
+    The employee profiles are generated using **percentile thresholds** on key job satisfaction metrics (e.g., career advancement, salary, job security). We group employees into profiles based on their satisfaction levels in various areas. For instance, a 'Career Climber' might be highly satisfied with career advancement but less satisfied with salary.
+
+    These predictions are based on the **test data** – a portion of the overall dataset that the model hasn't seen during training, allowing us to evaluate how well it generalises to new employees.
+
+    **How the LIME Explanation Works**:
+    
+    1. **Test Instance**: Using the random test instance generator, random employee is selected from the test data that matches the chosen profile 
+    2. **This test instance passes through the model and outputs predicted probabilities of 'Low Satisfaction' and 'High Satisfaction'
+    2. **Synthetic Data Generation**: LIME generates synthetic data points around this employee by slightly tweaking the features (like salary or job security).
+    3. **Model Predictions**: The model predicts job satisfaction for these synthetic employees.
+    4. **Weighting**: LIME gives higher importance to data points that are closer to the original employee/row of data
+    5. **Local Model**: Using the weighted data, LIME trains a simple, interpretable model to approximate how the complex model made its prediction for the specific employee.
+    6. **Explanation**: The resulting explanation shows which features (like salary or career advancement) had the most positive or negative impact on the employee’s job satisfaction.
+
+    This process helps break down the complex decision-making of the model into easy-to-understand pieces, giving you a clear sense of why the model made its prediction.
+    """)
 
 #######
 
 # Navigation Bar
 def main():
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Choose a page", ["Home", "Logit Predictors", "Random Forest MDI", "Profile Predictions"])
+    st.sidebar.title("Explore insights")
+    page = st.sidebar.radio("Choose a page", ["Welcome", "Key Predictors using Logistic Regression", "Feature Importance usng Random Forest", "Predictive Tool - Employee Profiles Explorer"])
 
-    if page == "Home":
+    if page == "Welcome":
         home_page()
-    elif page == "Logit Predictors":
+    elif page == "Key Predictors using Logistic Regression":
         logit_odds_ratios()
-    elif page == "Random Forest MDI":
+    elif page == "Feature Importance usng Random Forest":
         random_forest_mdi()
-    elif page == "Profile Predictions":
+    elif page == "Predictive Tool - Employee Profiles Explorer":
         prediction_page()
 
 # Call the main function to run the app
