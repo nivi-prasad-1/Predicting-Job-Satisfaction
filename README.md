@@ -315,7 +315,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="width: 40%; text-align: center;">
-        <img src="./interactive_app/policy.png" alt="policymakers" style="width: 55%; display: block; margin: auto;">
+        <img src="./interactive_app/policymakers.png" alt="policymakers" style="width: 55%; display: block; margin: auto;">
     </div>
     <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
         <h3 style="font-size: 26px;">1. Value for Policymakers</h3>  <!-- Increased heading size -->
@@ -330,7 +330,7 @@ In this case our random forest model and LIME seeks to explain one of the 'test 
 
 <div style="display: flex; justify-content: space-between;">
     <div style="width: 40%; text-align: center;">
-        <img src="./interactive_app/jobseeker.png" alt="jobseeker" style="width: 55%; display: block; margin: auto;">
+        <img src="./interactive_app/jobseekers.png" alt="jobseeker" style="width: 55%; display: block; margin: auto;">
     </div>
     <div style="width: 55%; font-size: 18px;">  <!-- Increased font size here -->
         <h3 style="font-size: 26px;">2. Value for Job Seekers</h3>  <!-- Increased heading size -->
@@ -361,9 +361,7 @@ The end goal is to explore the development of an application that enables:
 - **Jobseekers** to input their profile details and receive predictions about their likelihood of job satisfaction, as well as the factors contributing to that prediction.
 - **Policymakers** to explore trends in job satisfaction across industries, demographics, and geographies, allowing for targeted interventions.
 
-See our proof-of-concept Streamlit app preview here:
-
-[Preview of job satisfaction prediction app](https://drive.google.com/file/d/1m2goD1MmP3QlEUonwo0sj-ikCmOBctZ4/view?usp=sharing)
+[![Preview our proof-of-concept tool built using Streamlit](https://drive.google.com/uc?export=view&id=1oXJi_B3v9dg6a4DNKRMZoKPQv6DIXRYr)](https://drive.google.com/file/d/1m2goD1MmP3QlEUonwo0sj-ikCmOBctZ4/view?usp=sharing)
 
 
 *Watch this space as we iterate this further to include the following features...*
