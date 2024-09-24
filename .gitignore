@@ -9,7 +9,9 @@ data/
 *.pkl
 models/*.pkl
 preprocessed_variables/*.pkl
-models/
+models/*.joblib
+models/*.keras
+
 
 # Ignore macOS system file
 .DS_Store
