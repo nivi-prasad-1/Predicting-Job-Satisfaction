@@ -363,7 +363,7 @@ The end goal is to explore the development of an application that enables:
 
 *Here's a sneak peak (click the thumbnail below to watch a demo)*:
 
-[![Preview our proof-of-concept tool built using Streamlit](https://drive.google.com/uc?export=view&id=1oXJi_B3v9dg6a4DNKRMZoKPQv6DIXRYr)](https://drive.google.com/file/d/1m2goD1MmP3QlEUonwo0sj-ikCmOBctZ4/view?usp=sharing)
+[![Preview our proof-of-concept tool built using Streamlit](https://drive.google.com/uc?export=view&id=1oXJi_B3v9dg6a4DNKRMZoKPQv6DIXRYr)](https://drive.google.com/file/d/1aDQar66F5J3Hih6-RTFSG2hW8ycBdoQi/view?usp=sharing)
 
 
 *Next, we want to develop the following features...*
